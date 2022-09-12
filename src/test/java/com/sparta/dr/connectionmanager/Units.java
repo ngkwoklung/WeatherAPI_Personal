@@ -1,17 +1,17 @@
 package com.sparta.dr.connectionmanager;
 
 public enum Units {
-    STANDARD,
-    METRIC,
-    IMPERIAL;
+    STANDARD("standard"),
+    METRIC("metric"),
+    IMPERIAL("imperial");
 
-    private String name;
+    private String value;
 
-    Units(String name) {
-        this.name = name;
+    Units(String value) {
+        this.value = value;
     }
 
-    public String getName() {
-        return name;
+    public String getValue() {
+        return value;
     }
 }

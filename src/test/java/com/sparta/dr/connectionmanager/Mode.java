@@ -4,14 +4,14 @@ public enum Mode {
     XML("xml"),
     HTML("html");
 
-    private String name;
+    private String value;
 
-    Mode(String name) {
-        this.name = name;
+    Mode(String value) {
+        this.value = value;
     }
 
-    public String getName() {
-        return name;
+    public String getValue() {
+        return value;
     }
 }
 
