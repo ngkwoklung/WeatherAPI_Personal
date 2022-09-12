@@ -13,6 +13,7 @@ public class ConnectionManager {
     private static final Logger logger = Logger.getLogger("my logger");
     private static final ConsoleHandler consoleHandler = new ConsoleHandler();
     private static final String APIKEY = PropertiesLoader.getProperty("apikey");
+    private Mode mode;
 
     private static String BASEURL = "https://api.openweathermap.org/data/2.5/weather?";
 
@@ -34,6 +35,7 @@ public class ConnectionManager {
     public static String getConnectionURL(String url) {
         return BASEURL = url;
     }
+
 
 //    private static HttpResponse<String> getResponse() {
 //        var client = HttpClient.newHttpClient();
@@ -70,6 +72,25 @@ public class ConnectionManager {
         return response;
     }
 
+    private static HttpResponse<String> getResponse(String lat, String lon, Mode mode) {
+        String modeStr = mode.getName();
+        var client = HttpClient.newHttpClient();
+        var request = HttpRequest
+                .newBuilder()
+                .uri(URI.create(getConnectionURL(lat, lon) ))
+                .build();
+
+        HttpResponse<String> response =null;
+
+        try {
+            response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        } catch (IOException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        logger.log(Level.FINE, "Response is: " + response.body());
+        return response;
+    }
+
     public static HttpResponse<String> getResponse(String resource) {
         var client = HttpClient.newHttpClient();
         var request = HttpRequest
@@ -88,17 +109,6 @@ public class ConnectionManager {
         return response;
     }
 
-    public static String getResponseBody(String resource, String id) {
-        return getResponse(resource, id).body();
-    }
-
-    public static String getResponseBody(String resource, int id) {
-        return getResponse(resource, String.valueOf(id)).body();
-    }
-
-    public static String getResponseBody(String resource) {
-        return getResponse(resource).body();
-    }
 
 //    public static int getStatusCode() {
 //        return getResponse().statusCode();
