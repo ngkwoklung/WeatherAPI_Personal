@@ -2,6 +2,8 @@ package com.sparta.dr.DTO;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.Arrays;
+
 public class WeatherItem{
 
 	@JsonProperty("icon")
@@ -41,5 +43,14 @@ public class WeatherItem{
 			",main = '" + main + '\'' + 
 			",id = '" + id + '\'' + 
 			"}";
-		}
+	}
+
+	public boolean mainStartsWithCapitalLetter() {
+		return String.valueOf(main.charAt(0)).equals(String.valueOf(main.charAt(0)).toUpperCase());
+	}
+
+	public boolean idIsValidAccordingToMainType() {
+		Integer[] arrayToSearch = WeatherDTOUtils.getCorrespondingIdCodeArray(main);
+		return Arrays.asList(arrayToSearch).contains(id);
+	}
 }
