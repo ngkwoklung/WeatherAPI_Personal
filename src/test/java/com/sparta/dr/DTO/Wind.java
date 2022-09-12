@@ -13,18 +13,34 @@ public class Wind{
 	@JsonProperty("gust")
 	private Double gust;
 
+	/**
+	 * Get wind degree
+	 * @return deg
+	 */
 	public Integer getDeg(){
 		return deg;
 	}
 
+	/**
+	 * Get wind speed
+	 * @return speed
+	 */
 	public Double getSpeed(){
 		return speed;
 	}
 
+	/**
+	 * Get wind gust
+	 * @return gust
+	 */
 	public Double getGust(){
 		return gust;
 	}
 
+	/**
+	 * Obtain all the information as one string.
+	 * @return all values as a string
+	 */
 	@Override
  	public String toString(){
 		return 
