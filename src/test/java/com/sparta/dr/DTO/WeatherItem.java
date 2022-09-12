@@ -16,22 +16,42 @@ public class WeatherItem{
 	@JsonProperty("id")
 	private Integer id;
 
+	/**
+	 * Obtain Icon ID
+	 * @return icon
+	 */
 	public String getIcon(){
 		return icon;
 	}
 
+	/**
+	 * Get weather description
+	 * @return description
+	 */
 	public String getDescription(){
 		return description;
 	}
 
+	/**
+	 * Get main weather
+	 * @return main
+	 */
 	public String getMain(){
 		return main;
 	}
 
+	/**
+	 * Get weather id
+	 * @return id
+	 */
 	public Integer getId(){
 		return id;
 	}
 
+	/**
+	 * Obtain all the information as one string.
+	 * @return all values as a string
+	 */
 	@Override
  	public String toString(){
 		return 
