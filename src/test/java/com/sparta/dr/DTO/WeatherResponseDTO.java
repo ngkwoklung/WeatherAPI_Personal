@@ -1,6 +1,11 @@
 package com.sparta.dr.DTO;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
+import java.util.TimeZone;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class WeatherResponseDTO{
@@ -124,11 +129,15 @@ public class WeatherResponseDTO{
 			"}";
 		}
 
-		public visibilityIsAbove0() {
-			return visibility > 0
+		public boolean visibilityIsAbove0() {
+			return visibility > 0;
 		}
 
-		public timezoneIsAbove0() {
-			return timezone > 0
+		public boolean timezoneIsBetweenValidRange() {
+			return timezone >= -43200 && timezone <= 50400;
+		}
+
+		public boolean dtIsToday() {
+			return LocalDate.ofInstant(Instant.ofEpochSecond(1661870592), TimeZone.getDefault().toZoneId()).equals(LocalDate.now());
 		}
 }
