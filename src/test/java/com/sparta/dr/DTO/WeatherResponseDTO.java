@@ -123,4 +123,12 @@ public class WeatherResponseDTO{
 			",wind = '" + wind + '\'' + 
 			"}";
 		}
+
+		public visibilityIsAbove0() {
+			return visibility > 0
+		}
+
+		public timezoneIsAbove0() {
+			return timezone > 0
+		}
 }
