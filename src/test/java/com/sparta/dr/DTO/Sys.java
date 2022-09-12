@@ -2,6 +2,10 @@ package com.sparta.dr.DTO;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.util.TimeZone;
+
 public class Sys{
 
 	@JsonProperty("country")
@@ -74,4 +78,12 @@ public class Sys{
 			",type = '" + type + '\'' + 
 			"}";
 		}
+
+	public boolean sunriseIsToday() {
+		return LocalDate.ofInstant(Instant.ofEpochSecond(1661834187), TimeZone.getDefault().toZoneId()).equals(LocalDate.now());
+	}
+
+	public boolean sunsetIsToday() {
+		return LocalDate.ofInstant(Instant.ofEpochSecond(1661882248), TimeZone.getDefault().toZoneId()).equals(LocalDate.now());
+	}
 }

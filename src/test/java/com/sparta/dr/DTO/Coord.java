@@ -38,4 +38,12 @@ public class Coord{
 			",lat = '" + lat + '\'' + 
 			"}";
 		}
+
+	public boolean lonIsBetweenValidRange() {
+		return lon >= -180 && lon <= 180;
+	}
+
+	public boolean latIsBetweenValidRange() {
+		return lat >= -90 && lat <= 90;
+	}
 }
