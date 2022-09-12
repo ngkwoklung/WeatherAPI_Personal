@@ -1,19 +1,17 @@
 package com.sparta.dr;
 
-import java.net.http.HttpResponse;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
-// when we create a dto package ; import com.sparta.dr.framework.dto.WeatherDTO;
-
+import com.sparta.dr.DTO.*;
 import java.io.IOException;
 import java.net.http.HttpResponse;
 
 public class DTOInjector {
-    public static WeatherDTO injectDTO(HttpResponse<String> response){
-        WeatherDTO weatherDTO = new WeatherDTO();
+
+    public static WeatherResponseDTO injectDTO(HttpResponse<String> response){
+        WeatherResponseDTO weatherDTO = new WeatherResponseDTO();
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            weatherDTO = objectMapper.readValue(response.body(), WeatherDTO.class);
+            weatherDTO = objectMapper.readValue(response.body(), WeatherResponseDTO.class);
         } catch (IOException e) {
             e.printStackTrace();
         }
