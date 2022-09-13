@@ -23,13 +23,18 @@ public class ConnectionManager {
         consoleHandler.setLevel(Level.INFO);
     }
 
-    public static HttpResponse<String> getConnection(String lat, String lon) {
+    public static HttpResponse<String> getResponseByCoord(String lat, String lon) {
         String url = BASEURL + "lat=" + lat + "&lon=" + lon + "&appid=" + APIKEY + optionalParams;
         return getResponse(url);
     }
 
-    public static HttpResponse<String> getConnection(String lat, String lon, Units units) {
-        String url = getConnection(lat, lon).uri() + "&" + units.getValue();
+    public static HttpResponse<String> getResponseByCoord(String lat, String lon, Units units) {
+        String url = getResponseByCoord(lat, lon).uri() + "&" + units.getValue();
+        return getResponse(url);
+    }
+
+    public static HttpResponse<String> getResponseByCity(String city) {
+        String url = BASEURL + "q=" + city + "&appid=" + APIKEY + optionalParams;
         return getResponse(url);
     }
 
