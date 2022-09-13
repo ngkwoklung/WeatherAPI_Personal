@@ -34,12 +34,13 @@ public class ConnectionManager {
     }
 
     public static HttpResponse<String> getResponseByCity(String city) {
+        city = city.replaceAll("\s","%20" );
         String url = BASEURL + "q=" + city + "&appid=" + APIKEY + optionalParams;
         return getResponse(url);
     }
 
     public static HttpResponse<String> getResponseByCityId(String cityid) {
-        String url = BASEURL + "q=" + cityid + "&appid=" + APIKEY + optionalParams;
+        String url = BASEURL + "id=" + cityid + "&appid=" + APIKEY + optionalParams;
         return getResponse(url);
     }
 
