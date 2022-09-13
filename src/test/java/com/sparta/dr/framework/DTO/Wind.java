@@ -52,4 +52,6 @@ public class Wind{
 			",gust = '" + gust + '\'' + 
 			"}";
 		}
+
+
 }

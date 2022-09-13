@@ -129,11 +129,23 @@ public class WeatherResponse {
 			",wind = '" + wind + '\'' + 
 			"}";
 		}
-
+		public boolean isRainValid(){
+		return rain != null;
+		}
+	    public boolean isRainRangeValid(){
+		    if(rain!=null){
+			    return rain.getJsonMember1h()>= 0 && rain.getJsonMember1h() <= 320;
+		    } return false;
+	    }
+	    public boolean isVisibilityValid(){
+		    return visibility != null;
+	    }
 		public boolean visibilityIsBetweenValidRange() {
 			return visibility >= 0 && visibility <= 10000;
 		}
-
+	    public boolean isTimeZoneValid(){
+		    return timezone != null;
+	    }
 		public boolean timezoneIsBetweenValidRange() {
 			return timezone >= -43200 && timezone <= 50400;
 		}
@@ -141,4 +153,21 @@ public class WeatherResponse {
 		public boolean dtIsToday() {
 			return LocalDate.ofInstant(Instant.ofEpochSecond(dt), TimeZone.getDefault().toZoneId()).equals(LocalDate.now());
 		}
+		public boolean isWindValid(){
+		    return wind != null;
+		}
+
+		public boolean isDegBetween0And360(){
+			return getWind().getDeg() >= 0 && getWind().getDeg() <= 360;
+		}
+		public boolean isCOD200(){
+		    return cod == 200;
+		}
+	    public boolean isSysValid(){
+		    return sys != null;
+    	}
+	    public boolean isIdValid() {
+			return id != null;
+		}
+
 }
