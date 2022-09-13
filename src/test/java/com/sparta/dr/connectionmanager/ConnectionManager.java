@@ -57,10 +57,14 @@ public class ConnectionManager {
         return getResponse(url);
     }
 
-    public static HttpResponse<String> getResponseByZipId(Integer cityid) {
-        String url = BASEURL + "q=" + cityid.toString() + "&appid=" + APIKEY + optionalParams;
+    public static HttpResponse<String> getResponseByZipId(String zipid) {
+        String url = BASEURL + "q=" + zipid + "&appid=" + APIKEY + optionalParams;
         return getResponse(url);
+    }
 
+    public static HttpResponse<String> getResponseByZipId(Integer zipid) {
+        String url = BASEURL + "q=" + zipid.toString() + "&appid=" + APIKEY + optionalParams;
+        return getResponse(url);
     }
 
     public static String getConnectionURL(String lat, String lon) {
