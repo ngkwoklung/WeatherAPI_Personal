@@ -1,6 +1,8 @@
-package com.sparta.dr.connectionmanager;
+package com.sparta.dr.framework.frameworktests;
 
-import org.junit.jupiter.api.Assertions;
+import com.sparta.dr.framework.connectionmanager.ConnectionManager;
+import com.sparta.dr.framework.connectionmanager.Language;
+import com.sparta.dr.framework.connectionmanager.Units;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

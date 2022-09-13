@@ -1,11 +1,13 @@
-package com.sparta.dr.DTO;
+package com.sparta.dr.framework.DTO;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.TimeZone;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Sys{
 
 	@JsonProperty("country")

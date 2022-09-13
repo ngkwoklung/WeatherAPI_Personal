@@ -1,4 +1,4 @@
-package com.sparta.dr.connectionmanager;
+package com.sparta.dr.framework.connectionmanager;
 
 import java.io.FileReader;
 import java.io.IOException;

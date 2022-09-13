@@ -1,4 +1,4 @@
-package com.sparta.dr.connectionmanager;
+package com.sparta.dr.framework.connectionmanager;
 
 public enum Mode {
     XML("xml"),

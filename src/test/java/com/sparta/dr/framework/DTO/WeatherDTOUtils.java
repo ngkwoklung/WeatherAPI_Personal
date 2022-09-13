@@ -1,5 +1,8 @@
-package com.sparta.dr.DTO;
+package com.sparta.dr.framework.DTO;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class WeatherDTOUtils {
 
     private String[] iconList = {"01d", "02d", "03d", "04d", "09d", "10d", "11d", "13d", "50d",

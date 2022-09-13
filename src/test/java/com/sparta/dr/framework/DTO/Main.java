@@ -1,7 +1,9 @@
-package com.sparta.dr.DTO;
+package com.sparta.dr.framework.DTO;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Main{
 
 	@JsonProperty("temp")

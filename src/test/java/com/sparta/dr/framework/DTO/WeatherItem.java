@@ -1,9 +1,11 @@
-package com.sparta.dr.DTO;
+package com.sparta.dr.framework.DTO;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Arrays;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class WeatherItem{
 
 	@JsonProperty("icon")

@@ -1,14 +1,12 @@
-package com.sparta.dr;
+package com.sparta.dr.framework.injector;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sparta.dr.DTO.*;
+import com.sparta.dr.framework.DTO.*;
+
 import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-public class DTOInjector {
+public class Injector {
 
     /**
      * Fills DTO array with all the relevant information that has been downloaded from the website.
@@ -17,11 +15,11 @@ public class DTOInjector {
      * @param response
      * @return DTO object
      */
-    public static WeatherResponseDTO injectWeatherDTO(HttpResponse<String> response){
-        WeatherResponseDTO weatherDTO = new WeatherResponseDTO();
+    public static WeatherResponse injectWeatherDTO(HttpResponse<String> response){
+        WeatherResponse weatherDTO = new WeatherResponse();
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            weatherDTO = objectMapper.readValue(response.body(), WeatherResponseDTO.class);
+            weatherDTO = objectMapper.readValue(response.body(), WeatherResponse.class);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -88,6 +86,7 @@ public class DTOInjector {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             weatherItem = objectMapper.readValue(response.body(), WeatherItem.class);
+            System.out.println(weatherItem);
         } catch (IOException e) {
             e.printStackTrace();
         }
