@@ -4,10 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Snow {
 
     @JsonProperty("1h")
-    private double jsonMember1h;
+    private Double jsonMember1h;
 
     @JsonProperty("3h")
-    private double jsonMember3h;
+    private Double jsonMember3h;
 
     public double getJsonMember1h() {
         return jsonMember1h;
