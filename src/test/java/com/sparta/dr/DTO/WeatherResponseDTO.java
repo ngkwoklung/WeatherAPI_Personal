@@ -2,7 +2,6 @@ package com.sparta.dr.DTO;
 
 import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 import java.util.TimeZone;
 
@@ -129,8 +128,8 @@ public class WeatherResponseDTO{
 			"}";
 		}
 
-		public boolean visibilityIsAbove0() {
-			return visibility > 0;
+		public boolean visibilityIsBetweenValidRange() {
+			return visibility > 0 && visibility <= 10000;
 		}
 
 		public boolean timezoneIsBetweenValidRange() {
