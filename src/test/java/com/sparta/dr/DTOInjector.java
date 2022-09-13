@@ -9,6 +9,14 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class DTOInjector {
+
+    /**
+     * Fills DTO array with all the relevant information that has been downloaded from the website.
+     *
+     * Pass HttpResponse in order to make the injector work successfully.
+     * @param response
+     * @return DTO object
+     */
     public static WeatherResponseDTO injectWeatherDTO(HttpResponse<String> response){
         WeatherResponseDTO weatherDTO = new WeatherResponseDTO();
         ObjectMapper objectMapper = new ObjectMapper();
