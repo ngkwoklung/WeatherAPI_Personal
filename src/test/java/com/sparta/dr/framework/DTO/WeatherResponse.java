@@ -1,13 +1,15 @@
-package com.sparta.dr.DTO;
+package com.sparta.dr.framework.DTO;
 
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.TimeZone;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class WeatherResponseDTO{
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class WeatherResponse {
 
 	@JsonProperty("rain")
 	private Rain rain;
@@ -129,7 +131,7 @@ public class WeatherResponseDTO{
 		}
 
 		public boolean visibilityIsBetweenValidRange() {
-			return visibility > 0 && visibility <= 10000;
+			return visibility >= 0 && visibility <= 10000;
 		}
 
 		public boolean timezoneIsBetweenValidRange() {
@@ -137,6 +139,6 @@ public class WeatherResponseDTO{
 		}
 
 		public boolean dtIsToday() {
-			return LocalDate.ofInstant(Instant.ofEpochSecond(1661870592), TimeZone.getDefault().toZoneId()).equals(LocalDate.now());
+			return LocalDate.ofInstant(Instant.ofEpochSecond(dt), TimeZone.getDefault().toZoneId()).equals(LocalDate.now());
 		}
 }

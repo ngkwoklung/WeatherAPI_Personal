@@ -1,26 +1,21 @@
-package com.sparta.dr;
+package com.sparta.dr.framework.frameworktests;
 
-import com.sparta.dr.DTO.*;
-import com.sparta.dr.connectionmanager.ConnectionManager;
-import com.sparta.dr.connectionmanager.Mode;
-import com.sparta.dr.connectionmanager.PropertiesLoader;
-import net.bytebuddy.agent.VirtualMachine;
+import com.sparta.dr.framework.DTO.*;
+import com.sparta.dr.framework.connectionmanager.PropertiesLoader;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import static org.hamcrest.MatcherAssert.*;
+
 import static org.mockito.Mockito.mock;
 
-public class DTOInjectorTests {
+public class InjectorTests {
     private static String APIKEY = PropertiesLoader.getProperty("apikey");
     private static HttpResponse connection(){
         var client = HttpClient.newHttpClient();
@@ -44,56 +39,56 @@ public class DTOInjectorTests {
         @Test
         @DisplayName("Given a HttpRequest check that Weather injector return a dto that is not null")
         void givenAHttpRequestCheckThatWeatherInjectorReturnADtoThatIsNotNull() {
-            WeatherResponseDTO weatherDTO = DTOInjector.injectWeatherDTO(connection());
+            WeatherResponse weatherDTO = com.sparta.dr.framework.injector.Injector.injectWeatherDTO(connection());
             Assertions.assertNotNull(weatherDTO);
         }
 
         @Test
         @DisplayName("Given a HttpRequest check that cloud injector return a dto that is not null")
         void givenAHttpRequestCheckThatCloudInjectorReturnADtoThatIsNotNull() {
-            Clouds clouds = DTOInjector.injectCloudDTO(connection());
+            Clouds clouds = com.sparta.dr.framework.injector.Injector.injectCloudDTO(connection());
             Assertions.assertNotNull(clouds);
         }
 
         @Test
         @DisplayName("Given a HttpRequest check that Main injector return a dto that is not null")
         void givenAHttpRequestCheckThatMainInjectorReturnADtoThatIsNotNull() {
-            Main main = DTOInjector.injectMainDTO(connection());
+            Main main = com.sparta.dr.framework.injector.Injector.injectMainDTO(connection());
             Assertions.assertNotNull(main);
         }
 
         @Test
         @DisplayName("Given a HttpRequest check that Coord injector return a dto that is not null")
         void givenAHttpRequestCheckThatCoordInjectorReturnADtoThatIsNotNull() {
-            Coord coord = DTOInjector.injectCoordDTO(connection());
+            Coord coord = com.sparta.dr.framework.injector.Injector.injectCoordDTO(connection());
             Assertions.assertNotNull(coord);
         }
 
         @Test
         @DisplayName("Given a HttpRequest check that Rain injector return a dto that is not null")
         void givenAHttpRequestCheckThatRainInjectorReturnADtoThatIsNotNull() {
-            Rain rain = DTOInjector.injectRainDTO(connection());
+            Rain rain = com.sparta.dr.framework.injector.Injector.injectRainDTO(connection());
             Assertions.assertNotNull(rain);
         }
 
         @Test
         @DisplayName("Given a HttpRequest check that Sys injector return a dto that is not null")
         void givenAHttpRequestCheckThatSysInjectorReturnADtoThatIsNotNull() {
-            Sys sys = DTOInjector.injectSysDTO(connection());
+            Sys sys = com.sparta.dr.framework.injector.Injector.injectSysDTO(connection());
             Assertions.assertNotNull(sys);
         }
 
         @Test
         @DisplayName("Given a HttpRequest check that WeatherItem injector return a dto that is not null")
         void givenAHttpRequestCheckThatWeatherItemInjectorReturnADtoThatIsNotNull() {
-            WeatherItem weatherItem = DTOInjector.injectWeatherItemDTO(connection());
+            WeatherItem weatherItem = com.sparta.dr.framework.injector.Injector.injectWeatherItemDTO(connection());
             Assertions.assertNotNull(weatherItem);
         }
 
         @Test
         @DisplayName("Given a HttpRequest check that WeatherResponseDTO injector return a dto that is not null")
         void givenAHttpRequestCheckThatWeatherResponseDTOInjectorReturnADtoThatIsNotNull() {
-            WeatherResponseDTO weatherResponseDTO = DTOInjector.injectWeatherDTO(connection());
+            WeatherResponse weatherResponseDTO = com.sparta.dr.framework.injector.Injector.injectWeatherDTO(connection());
             Assertions.assertNotNull(weatherResponseDTO);
         }
     }
