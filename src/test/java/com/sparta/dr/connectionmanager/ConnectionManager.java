@@ -12,10 +12,9 @@ import java.util.logging.Logger;
 public class ConnectionManager {
     private static final Logger logger = Logger.getLogger("my logger");
     private static final ConsoleHandler consoleHandler = new ConsoleHandler();
+    private static final String BASEURL = "https://api.openweathermap.org/data/2.5/weather?";
     private static final String APIKEY = PropertiesLoader.getProperty("apikey");
-    private Mode mode;
-
-    private static String BASEURL = "https://api.openweathermap.org/data/2.5/weather?";
+    private static String optionalParams = "";
 
     {
         logger.setLevel(Level.FINE);
@@ -24,78 +23,43 @@ public class ConnectionManager {
         consoleHandler.setLevel(Level.INFO);
     }
 
-    public static String getConnectionURL() {
-        return BASEURL;
+    public static HttpResponse<String> getResponseByCoord(String lat, String lon) {
+        String url = BASEURL + "lat=" + lat + "&lon=" + lon + "&appid=" + APIKEY + optionalParams;
+        return getResponse(url);
+    }
+
+    public static HttpResponse<String> getResponseByCoord(String lat, String lon, Units units) {
+        String url = getResponseByCoord(lat, lon).uri() + "&" + units.getValue();
+        return getResponse(url);
+    }
+
+    public static HttpResponse<String> getResponseByCity(String city) {
+        String url = BASEURL + "q=" + city + "&appid=" + APIKEY + optionalParams;
+        return getResponse(url);
     }
 
     public static String getConnectionURL(String lat, String lon) {
-        return BASEURL + "lat=" + lat + "lon=" + lon + "appid=" + APIKEY;
+        return BASEURL + "lat=" + lat + "&lon=" + lon + "&appid=" + APIKEY + optionalParams;
     }
 
-    public static String getConnectionURL(String url) {
-        return BASEURL = url;
+    public static void setUnits(Units units) {
+        optionalParams = optionalParams + "&units=" + units.getValue();
+    }
+
+    public static void setMode(Mode mode) {
+        optionalParams = optionalParams + "&mode=" + mode.getValue();
+    }
+
+    public static void setLanguage(Language lang) {
+        optionalParams = optionalParams + "&lang=" + lang.getValue();
     }
 
 
-//    private static HttpResponse<String> getResponse() {
-//        var client = HttpClient.newHttpClient();
-//        var request = HttpRequest
-//                .newBuilder()
-//                .uri(URI.create(BASEURL))
-//                .build();
-//
-//        HttpResponse<String> response =null;
-//
-//        try {
-//            response = client.send(request, HttpResponse.BodyHandlers.ofString());
-//        } catch (IOException | InterruptedException e) {
-//            throw new RuntimeException(e);
-//        }
-//        logger.log(Level.FINE, "Response is: " + response.body());
-//        return response;
-//    }
-    private static HttpResponse<String> getResponse(String lat, String lon) {
+    public static HttpResponse<String> getResponse(String url) {
         var client = HttpClient.newHttpClient();
         var request = HttpRequest
                 .newBuilder()
-                .uri(URI.create(getConnectionURL(lat, lon)))
-                .build();
-
-        HttpResponse<String> response =null;
-
-        try {
-            response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        } catch (IOException | InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        logger.log(Level.FINE, "Response is: " + response.body());
-        return response;
-    }
-
-    private static HttpResponse<String> getResponse(String lat, String lon, Mode mode) {
-        String modeStr = mode.getName();
-        var client = HttpClient.newHttpClient();
-        var request = HttpRequest
-                .newBuilder()
-                .uri(URI.create(getConnectionURL(lat, lon) ))
-                .build();
-
-        HttpResponse<String> response =null;
-
-        try {
-            response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        } catch (IOException | InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        logger.log(Level.FINE, "Response is: " + response.body());
-        return response;
-    }
-
-    public static HttpResponse<String> getResponse(String resource) {
-        var client = HttpClient.newHttpClient();
-        var request = HttpRequest
-                .newBuilder()
-                .uri(URI.create(resource))
+                .uri(URI.create(url))
                 .build();
 
         HttpResponse<String> response =null;
@@ -108,21 +72,4 @@ public class ConnectionManager {
         logger.log(Level.FINE, "Response is: " + response.body());
         return response;
     }
-
-
-//    public static int getStatusCode() {
-//        return getResponse().statusCode();
-//    }
-
-
-    public static int getStatusCode(String url) {
-        return getResponse(url).statusCode();
-    }
-
-//    public static String getHeader(String key) {
-//        return getResponse()
-//                .headers()
-//                .firstValue(key)
-//                .orElse("Key not found");
-//    }
 }
