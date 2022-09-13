@@ -41,6 +41,14 @@ public class Coord{
 			"}";
 		}
 
+	public boolean lonIsNotNull(){
+		return getLon() != null;
+	}
+
+	public boolean latIsNotNull(){
+		return getLat() != null;
+	}
+
 	public boolean lonIsBetweenValidRange() {
 		return lon >= -180 && lon <= 180;
 	}
