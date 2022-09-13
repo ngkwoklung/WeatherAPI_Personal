@@ -38,6 +38,35 @@ public class ConnectionManager {
         return getResponse(url);
     }
 
+    public static HttpResponse<String> getResponseByCityId(String cityid) {
+        String url = BASEURL + "q=" + cityid + "&appid=" + APIKEY + optionalParams;
+        return getResponse(url);
+    }
+
+    public static HttpResponse<String> getResponseByCityAndCountry(String city, String country) {
+        String url = BASEURL + "q=" + city + "," + country + "%appid=" + APIKEY + optionalParams;
+        return getResponse(url);
+    }
+    public static HttpResponse<String> getResponseByCityAndStateAndCountry(String city, String stateCode, String country) {
+        String url = BASEURL + "q=" + city + "," + stateCode + "," + country + "%appid=" + APIKEY + optionalParams;
+        return getResponse(url);
+    }
+
+    public static HttpResponse<String> getResponseByCityId(Integer cityid) {
+        String url = BASEURL + "q=" + cityid.toString() + "&appid=" + APIKEY + optionalParams;
+        return getResponse(url);
+    }
+
+    public static HttpResponse<String> getResponseByZipId(String zipid) {
+        String url = BASEURL + "q=" + zipid + "&appid=" + APIKEY + optionalParams;
+        return getResponse(url);
+    }
+
+    public static HttpResponse<String> getResponseByZipId(Integer zipid) {
+        String url = BASEURL + "q=" + zipid.toString() + "&appid=" + APIKEY + optionalParams;
+        return getResponse(url);
+    }
+
     public static String getConnectionURL(String lat, String lon) {
         return BASEURL + "lat=" + lat + "&lon=" + lon + "&appid=" + APIKEY + optionalParams;
     }

@@ -1,12 +1,13 @@
 package com.sparta.dr;
 
-import com.sparta.dr.DTO.WeatherResponseDTO;
+import com.sparta.dr.DTO.*;
 import com.sparta.dr.connectionmanager.ConnectionManager;
 import com.sparta.dr.connectionmanager.Mode;
 import com.sparta.dr.connectionmanager.PropertiesLoader;
 import net.bytebuddy.agent.VirtualMachine;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -36,17 +37,64 @@ public class DTOInjectorTests {
         return response;
     }
 
-    @Test
-    @DisplayName("Given a HttpRequest check that injector return a dto that is not null")
-    void givenAHttpRequestCheckThatInjectorReturnADtoThatIsNotNull() {
-        WeatherResponseDTO weatherDTO = DTOInjector.injectDTO(connection());
-        System.out.println(weatherDTO.toString());
-        Assertions.assertNotNull(weatherDTO);
-    }
 
-    @Test
-    @DisplayName("Given a HttpRequest check that the injector populates the DTO correctly")
-    void givenAHttpRequestCheckThatTheInjectorPopulatesTheDtoCorrectly() {
+    @Nested
+    @DisplayName("Checking all injector methods are not null")
+    class Injector{
+        @Test
+        @DisplayName("Given a HttpRequest check that Weather injector return a dto that is not null")
+        void givenAHttpRequestCheckThatWeatherInjectorReturnADtoThatIsNotNull() {
+            WeatherResponseDTO weatherDTO = DTOInjector.injectWeatherDTO(connection());
+            Assertions.assertNotNull(weatherDTO);
+        }
 
+        @Test
+        @DisplayName("Given a HttpRequest check that cloud injector return a dto that is not null")
+        void givenAHttpRequestCheckThatCloudInjectorReturnADtoThatIsNotNull() {
+            Clouds clouds = DTOInjector.injectCloudDTO(connection());
+            Assertions.assertNotNull(clouds);
+        }
+
+        @Test
+        @DisplayName("Given a HttpRequest check that Main injector return a dto that is not null")
+        void givenAHttpRequestCheckThatMainInjectorReturnADtoThatIsNotNull() {
+            Main main = DTOInjector.injectMainDTO(connection());
+            Assertions.assertNotNull(main);
+        }
+
+        @Test
+        @DisplayName("Given a HttpRequest check that Coord injector return a dto that is not null")
+        void givenAHttpRequestCheckThatCoordInjectorReturnADtoThatIsNotNull() {
+            Coord coord = DTOInjector.injectCoordDTO(connection());
+            Assertions.assertNotNull(coord);
+        }
+
+        @Test
+        @DisplayName("Given a HttpRequest check that Rain injector return a dto that is not null")
+        void givenAHttpRequestCheckThatRainInjectorReturnADtoThatIsNotNull() {
+            Rain rain = DTOInjector.injectRainDTO(connection());
+            Assertions.assertNotNull(rain);
+        }
+
+        @Test
+        @DisplayName("Given a HttpRequest check that Sys injector return a dto that is not null")
+        void givenAHttpRequestCheckThatSysInjectorReturnADtoThatIsNotNull() {
+            Sys sys = DTOInjector.injectSysDTO(connection());
+            Assertions.assertNotNull(sys);
+        }
+
+        @Test
+        @DisplayName("Given a HttpRequest check that WeatherItem injector return a dto that is not null")
+        void givenAHttpRequestCheckThatWeatherItemInjectorReturnADtoThatIsNotNull() {
+            WeatherItem weatherItem = DTOInjector.injectWeatherItemDTO(connection());
+            Assertions.assertNotNull(weatherItem);
+        }
+
+        @Test
+        @DisplayName("Given a HttpRequest check that WeatherResponseDTO injector return a dto that is not null")
+        void givenAHttpRequestCheckThatWeatherResponseDTOInjectorReturnADtoThatIsNotNull() {
+            WeatherResponseDTO weatherResponseDTO = DTOInjector.injectWeatherDTO(connection());
+            Assertions.assertNotNull(weatherResponseDTO);
+        }
     }
 }
