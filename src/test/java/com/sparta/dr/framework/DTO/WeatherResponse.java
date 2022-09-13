@@ -170,4 +170,30 @@ public class WeatherResponse {
 			return id != null;
 		}
 
+	public boolean areIdsInWeatherItemValid() {
+		for( WeatherItem item: weather){
+			if (!item.idISValid()) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public boolean areIconsInWeatherItemValid() {
+		for( WeatherItem item: weather){
+			if (!item.iconIsValid()) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public boolean areMainsInWeatherItemValid() {
+		for( WeatherItem item: weather){
+			if (!item.mainIsValid()) {
+				return false;
+			}
+		}
+		return true;
+	}
 }
