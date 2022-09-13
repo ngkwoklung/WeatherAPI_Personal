@@ -28,4 +28,12 @@ public class Clouds{
 			"all = '" + all + '\'' + 
 			"}";
 		}
+
+	public boolean isCloudsNull(){
+		return getAll() != null;
+	}
+
+	public boolean isCloudPositive(){
+		return getAll() >= 0;
+	}
 }
