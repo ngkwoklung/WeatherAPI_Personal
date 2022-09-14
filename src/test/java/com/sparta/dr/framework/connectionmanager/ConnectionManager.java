@@ -27,6 +27,10 @@ public class ConnectionManager {
         String url = BASEURL + "lat=" + lat + "&lon=" + lon + "&appid=" + APIKEY + optionalParams;
         return getResponse(url);
     }
+    public static HttpResponse<String> getResponseByCoord(int lat, int lon) {
+        String url = BASEURL + "lat=" + lat + "&lon=" + lon + "&appid=" + APIKEY + optionalParams;
+        return getResponse(url);
+    }
 
     public static HttpResponse<String> getResponseByCoord(String lat, String lon, Units units) {
         String url = getResponseByCoord(lat, lon).uri() + "&" + units.getValue();

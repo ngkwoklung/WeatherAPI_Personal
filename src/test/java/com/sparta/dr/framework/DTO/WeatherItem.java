@@ -71,8 +71,24 @@ public class WeatherItem{
 		return String.valueOf(main.charAt(0)).equals(String.valueOf(main.charAt(0)).toUpperCase());
 	}
 
-	public boolean idIsValidAccordingToMainType() {
+	public boolean idISValid() {
 		Integer[] arrayToSearch = WeatherDTOUtils.getCorrespondingIdCodeArray(main);
 		return Arrays.asList(arrayToSearch).contains(id);
 	}
+
+	public boolean iconIsValid(){
+		String[] arrayToSearch = WeatherDTOUtils.getIconList();
+		return Arrays.asList(arrayToSearch).contains(icon);
+	}
+
+	public boolean mainIsValid(){
+		String[] arrayToSearch = WeatherDTOUtils.getWeatherItemsMainList();
+		return Arrays.asList(arrayToSearch).contains(main);
+	}
+
+
+
+
+
+
 }
