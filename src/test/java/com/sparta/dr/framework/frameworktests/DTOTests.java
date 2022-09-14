@@ -1,5 +1,6 @@
 package com.sparta.dr.framework.frameworktests;
 
+import com.sparta.dr.framework.DTO.Clouds;
 import com.sparta.dr.framework.DTO.Snow;
 import com.sparta.dr.framework.DTO.Wind;
 import org.junit.jupiter.api.Assertions;
@@ -13,13 +14,16 @@ public class DTOTests {
 
     private Snow mockSnow;
     private Wind mockWind;
+    private Clouds mockClouds;
 
     @BeforeEach
     void init(){
         mockSnow = Mockito.mock(Snow.class);
         mockWind = Mockito.mock(Wind.class);
+        mockClouds = Mockito.mock(Clouds.class);
     }
 
+    //Tests for wind dto
    @Test
    @DisplayName("When calling toString method on wind, return I am fake object")
    void whenCallingToStringMethodOnWindReturnIAmFakeObject(){
@@ -83,6 +87,7 @@ public class DTOTests {
         Assertions.assertEquals(5.5,mockWind.getGust());
    }
 
+   //Tests for snow dto
    @Test
    @DisplayName("When I am calling toString method on snow, then return I am fake object")
    void whenIAmCallingToStringMethodOnSnowThenReturnIAmFakeObject(){
@@ -116,5 +121,34 @@ public class DTOTests {
    void whenIAmCallingTheGetJsonMember3HMethodReturn55(){
         Mockito.when(mockSnow.getJsonMember3h()).thenReturn(5.5);
         Assertions.assertEquals(5.5, mockSnow.getJsonMember3h());
+   }
+
+   //Tests for snow dto
+   @Test
+   @DisplayName("When I am calling toString method on clouds, then return I am fake object")
+   void whenIAmCallingToStringMethodOnCloudsThenReturnIAmFakeObject(){
+        Mockito.when(mockClouds.toString()).thenReturn("I am fake object");
+        Assertions.assertEquals("I am fake object",mockClouds.toString());
+   }
+
+   @Test
+   @DisplayName("When calling is clouds null method, return true")
+   void whenCallingIsCloudsNullMethodReturnTrue(){
+        Mockito.when(mockClouds.isCloudsNull()).thenReturn(true);
+        Assertions.assertTrue(mockClouds.isCloudsNull());
+   }
+
+   @Test
+   @DisplayName("When calling is cloud positive method, return true")
+   void whenCallingIsCloudPositiveMethodReturnTrue(){
+        Mockito.when(mockClouds.isCloudPositive()).thenReturn(true);
+        Assertions.assertTrue(mockClouds.isCloudPositive());
+   }
+
+   @Test
+   @DisplayName("When calling the get all method, return 5")
+   void whenCallingTheGetAllMethodReturn5(){
+        Mockito.when(mockClouds.getAll()).thenReturn(5);
+        Assertions.assertEquals(5,mockClouds.getAll());
    }
 }
