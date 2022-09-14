@@ -10,7 +10,7 @@ public class Clouds{
 	private Integer all;
 
 	/**
-	 * Get all property from clouds key
+	 * Return Get all property from clouds key
 	 * @return all
 	 */
 	public Integer getAll(){
@@ -18,7 +18,7 @@ public class Clouds{
 	}
 
 	/**
-	 * Obtain all the information as one string.
+	 * Return Obtain all the information as one string.
 	 * @return all values as a string
 	 */
 	@Override
@@ -30,7 +30,7 @@ public class Clouds{
 		}
 
 	/**
-	 * Returns whether the clouds are present
+	 * Return whether the clouds are present
  	 * @return (boolean) all
 	 */
 	public boolean isCloudsNull(){
@@ -38,7 +38,7 @@ public class Clouds{
 	}
 
 	/**
-	 * Returns clouds level
+	 * Return clouds level
 	 * @return all
 	 */
 	public boolean isCloudPositive(){

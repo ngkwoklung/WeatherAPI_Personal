@@ -10,7 +10,7 @@ public class Rain{
 	private Double jsonMember1h;
 
 	/**
-	 * Returns rain level in 1h property
+	 * Return rain level in 1h property
 	 * @return 1h
 	 */
 	public Double getJsonMember1h(){
@@ -18,7 +18,7 @@ public class Rain{
 	}
 
 	/**
-	 * Obtain all the information as one string.
+	 * Return Obtain all the information as one string.
 	 * @return all values as a string
 	 */
 	@Override
@@ -38,7 +38,7 @@ public class Rain{
 	}
 
 	/**
-	 * Returns whether density of rain is positive
+	 * Return whether density of rain is positive
 	 * @return all
 	 */
 	public boolean isRainPositive(){
