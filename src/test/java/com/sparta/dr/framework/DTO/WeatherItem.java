@@ -27,6 +27,9 @@ public class WeatherItem{
 		this.id = id;
 	}
 
+	public WeatherItem() {
+	}
+
 	/**
 	 * Obtain Icon ID
 	 * @return icon

@@ -1,13 +1,11 @@
-package com.sparta.dr.framework.frameworktests;
+package com.sparta.dr.framework.framework_tests;
 
-import com.sparta.dr.framework.connectionmanager.ConnectionManager;
-import com.sparta.dr.framework.connectionmanager.Language;
-import com.sparta.dr.framework.connectionmanager.Mode;
-import com.sparta.dr.framework.connectionmanager.Units;
+import com.sparta.dr.framework.connection_manager.ConnectionManager;
+import com.sparta.dr.framework.connection_manager.Language;
+import com.sparta.dr.framework.connection_manager.Mode;
+import com.sparta.dr.framework.connection_manager.Units;
 import org.junit.Assert;
 import org.junit.jupiter.api.*;
-
-import java.net.http.HttpResponse;
 
 public class ConnectionManagerTest {
 

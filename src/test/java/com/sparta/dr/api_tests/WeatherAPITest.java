@@ -1,7 +1,7 @@
 package com.sparta.dr.api_tests;
 
 import com.sparta.dr.framework.DTO.WeatherResponse;
-import com.sparta.dr.framework.connectionmanager.ConnectionManager;
+import com.sparta.dr.framework.connection_manager.ConnectionManager;
 import com.sparta.dr.framework.injector.Injector;
 import org.junit.jupiter.api.*;
 
@@ -11,12 +11,14 @@ public class WeatherAPITest {
 
     @BeforeAll
     static void setupAll() {
-        weatherResponse = Injector.injectWeatherDTO(ConnectionManager.getResponseByRandomCoord());
+         weatherResponse = Injector.injectWeatherDTO(ConnectionManager.getResponseByRandomCoord());
     }
 
     @Nested
     @DisplayName("Weather Items Tests")
     class WeatherItemsTest {
+
+
         @Test
         @DisplayName("check that the id is valid")
         void checkThatTheIdIsValid() {

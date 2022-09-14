@@ -1,4 +1,4 @@
-package com.sparta.dr.framework.connectionmanager;
+package com.sparta.dr.framework.connection_manager;
 
 import java.io.IOException;
 import java.net.URI;
@@ -11,7 +11,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ConnectionManager {
-
 
     private static final int longitude = ConnectionManagerUtils.getRandomLongitude();
     private static final int latitude = ConnectionManagerUtils.getRandomLatitude();
@@ -42,10 +41,6 @@ public class ConnectionManager {
     }
     public static HttpResponse<String> getResponseByRandomCoord() {
         String url = BASEURL + "lat=" + latitude + "&lon=" + longitude + "&appid=" + APIKEY + optionalParams;
-        return getResponse(url);
-    }
-    public static HttpResponse<String> getResponseByCoord(int lat, int lon) {
-        String url = BASEURL + "lat=" + lat + "&lon=" + lon + "&appid=" + APIKEY + buildParams();
         return getResponse(url);
     }
 
