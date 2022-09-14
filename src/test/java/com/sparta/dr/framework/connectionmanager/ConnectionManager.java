@@ -26,51 +26,94 @@ public class ConnectionManager {
         consoleHandler.setLevel(Level.INFO);
     }
 
+    /**
+     * Return HttpResponse by passing latitude and longitude as Strings
+     * @return HttpResponse
+     */
     public static HttpResponse<String> getResponseByCoord(String lat, String lon) {
         String url = BASEURL + "lat=" + lat + "&lon=" + lon + "&appid=" + APIKEY + buildParams();
         return getResponse(url);
     }
+
+    /**
+     * Return HttpResponse by passing latitude and longitude as ints
+     * @return HttpResponse
+     */
     public static HttpResponse<String> getResponseByCoord(int lat, int lon) {
         String url = BASEURL + "lat=" + lat + "&lon=" + lon + "&appid=" + APIKEY + buildParams();
         return getResponse(url);
     }
 
+    /**
+     * Return HttpResponse by passing a city name
+     * @return HttpResponse
+     */
     public static HttpResponse<String> getResponseByCity(String city) {
         city = city.replaceAll("\s","%20" );
         String url = BASEURL + "q=" + city + "&appid=" + APIKEY + buildParams();
         return getResponse(url);
     }
 
+    /**
+     * Return HttpResponse by passing a unique city id as a String
+     * @return HttpResponse
+     */
     public static HttpResponse<String> getResponseByCityId(String cityid) {
         String url = BASEURL + "id=" + cityid + "&appid=" + APIKEY + buildParams();
         return getResponse(url);
     }
 
+    /**
+     * Return HttpResponse by passing a unique city id as an Integer
+     * @return HttpResponse
+     */
+    public static HttpResponse<String> getResponseByCityId(Integer cityid) {
+        String url = BASEURL + "id=" + cityid.toString() + "&appid=" + APIKEY + buildParams();
+        return getResponse(url);
+    }
+
+    /**
+     * Return HttpResponse for a specific city by passing a city name and country code
+     * @return HttpResponse
+     */
     public static HttpResponse<String> getResponseByCityAndCountry(String city, String country) {
         String url = BASEURL + "q=" + city + "," + country + "&appid=" + APIKEY + buildParams();
         return getResponse(url);
     }
+
+    /**
+     * Return HttpResponse for a specific city by passing a city name and country code
+     * @return HttpResponse
+     */
     public static HttpResponse<String> getResponseByCityAndStateAndCountry(String city, String stateCode, String country) {
         city = city.replaceAll("\s","%20" );
         String url = BASEURL + "q=" + city + "," + stateCode + "," + country + "&appid=" + APIKEY + buildParams();
         return getResponse(url);
     }
 
-    public static HttpResponse<String> getResponseByCityId(Integer cityid) {
-        String url = BASEURL + "id=" + cityid.toString() + "&appid=" + APIKEY + buildParams();
-        return getResponse(url);
-    }
-
+    /**
+     * Return HttpResponse by passing Zip code as a String, works for USA only
+     * @return HttpResponse
+     */
     public static HttpResponse<String> getResponseByZipId(String zipid) {
         String url = BASEURL + "q=" + zipid + "&appid=" + APIKEY + buildParams();
         return getResponse(url);
     }
 
+    /**
+     * Return HttpResponse by passing Zip code as an Integer, works for USA only
+     * @return HttpResponse
+     */
     public static HttpResponse<String> getResponseByZipId(Integer zipid) {
         String url = BASEURL + "q=" + zipid.toString() + "&appid=" + APIKEY + buildParams();
         return getResponse(url);
     }
 
+    /**
+     * Return HttpResponse by passing Zip code as an Integer and country code, if country is not specified then the
+     * search works for USA as a default
+     * @return boolean
+     */
     public static HttpResponse<String> getResponseByZipIdAndCountryCode(Integer zipid, String countryCode) {
         String url = BASEURL + "q=" + zipid.toString() + "," + countryCode + "&appid=" + APIKEY + buildParams();
         return getResponse(url);
