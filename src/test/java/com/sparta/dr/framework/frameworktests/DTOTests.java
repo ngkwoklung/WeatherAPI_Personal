@@ -89,4 +89,32 @@ public class DTOTests {
         Mockito.when(mockSnow.toString()).thenReturn("I am fake object");
         Assertions.assertEquals("I am fake object",mockSnow.toString());
    }
+
+   @Test
+   @DisplayName("Is snow1h in range")
+   void isSnow1hInRange(){
+        Mockito.when(mockSnow.isSnow1hBetweenRange0To107()).thenReturn(true);
+        Assertions.assertTrue(mockSnow.isSnow1hBetweenRange0To107());
+   }
+
+   @Test
+   @DisplayName("Is snow3h in range")
+   void isSnow3HInRange(){
+        Mockito.when(mockSnow.isSnow3hBetweenRange0To320()).thenReturn(true);
+        Assertions.assertTrue(mockSnow.isSnow3hBetweenRange0To320());
+   }
+
+   @Test
+   @DisplayName("When I am calling the getJsonMember1h method, return 5.5")
+   void whenIAmCallingTheGetJsonMember1HMethodReturn55(){
+        Mockito.when(mockSnow.getJsonMember1h()).thenReturn(5.5);
+        Assertions.assertEquals(5.5, mockSnow.getJsonMember1h());
+   }
+
+   @Test
+   @DisplayName("When I am calling the getJsonMember3h method, return 5.5")
+   void whenIAmCallingTheGetJsonMember3HMethodReturn55(){
+        Mockito.when(mockSnow.getJsonMember3h()).thenReturn(5.5);
+        Assertions.assertEquals(5.5, mockSnow.getJsonMember3h());
+   }
 }
