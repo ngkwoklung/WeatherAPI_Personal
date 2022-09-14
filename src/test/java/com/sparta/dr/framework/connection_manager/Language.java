@@ -1,4 +1,4 @@
-package com.sparta.dr.framework.connectionmanager;
+package com.sparta.dr.framework.connection_manager;
 
 public enum Language {
     AFRIKAANS("af"),

@@ -1,4 +1,4 @@
-package com.sparta.dr.framework.frameworktests;
+package com.sparta.dr.framework.framework_tests;
 
 import com.sparta.dr.framework.DTO.*;
 import org.junit.jupiter.api.Assertions;
@@ -7,7 +7,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import java.util.stream.Stream;
