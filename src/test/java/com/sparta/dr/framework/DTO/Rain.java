@@ -39,7 +39,7 @@ public class Rain{
 
 	/**
 	 * Returns whether density of rain is positive
-	 * @return
+	 * @return all
 	 */
 	public boolean isRainPositive(){
 		return getJsonMember1h() >= 0;

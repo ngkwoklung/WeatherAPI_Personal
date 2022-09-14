@@ -81,30 +81,58 @@ public class Sys{
 			"}";
 		}
 
+	/**
+	 * Return whether sunrise is present or not
+ 	 * @return boolean
+	 */
 	public boolean sunriseIsNotNull(){
 		return getSunrise() != null;
 	}
 
+	/**
+	 * Return whether sunset is present or not
+	 * @return boolean
+	 */
 	public boolean sunsetIsNotNull(){
 		return getSunset() != null;
 	}
 
+	/**
+	 * Return whether type is present or not
+	 * @return boolean
+	 */
 	public boolean typeIsNotNull(){
 		return getType() != null;
 	}
 
+	/**
+	 * Return whether ID is present or not
+	 * @return boolean
+	 */
 	public boolean idIsNotNull(){
 		return getId() != null;
 	}
 
+	/**
+	 * Return whether country is present or not
+	 * @return boolean
+	 */
 	public boolean countryIsNotNull(){
 		return getCountry() != null;
 	}
 
+	/**
+	 * Return time of sunrise
+	 * @return time
+	 */
 	public boolean sunriseIsToday() {
 		return LocalDate.ofInstant(Instant.ofEpochSecond(1661834187), TimeZone.getDefault().toZoneId()).equals(LocalDate.now());
 	}
 
+	/**
+	 * Return time of sunset
+	 * @return time
+	 */
 	public boolean sunsetIsToday() {
 		return LocalDate.ofInstant(Instant.ofEpochSecond(1661882248), TimeZone.getDefault().toZoneId()).equals(LocalDate.now());
 	}
