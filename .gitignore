@@ -50,4 +50,5 @@ out/
 *.ipr
 *.iws
 
-key
+weatherapi.properties
+
