@@ -81,6 +81,26 @@ public class Sys{
 			"}";
 		}
 
+	public boolean sunriseIsNotNull(){
+		return getSunrise() != null;
+	}
+
+	public boolean sunsetIsNotNull(){
+		return getSunset() != null;
+	}
+
+	public boolean typeIsNotNull(){
+		return getType() != null;
+	}
+
+	public boolean idIsNotNull(){
+		return getId() != null;
+	}
+
+	public boolean countryIsNotNull(){
+		return getCountry() != null;
+	}
+
 	public boolean sunriseIsToday() {
 		return LocalDate.ofInstant(Instant.ofEpochSecond(1661834187), TimeZone.getDefault().toZoneId()).equals(LocalDate.now());
 	}
