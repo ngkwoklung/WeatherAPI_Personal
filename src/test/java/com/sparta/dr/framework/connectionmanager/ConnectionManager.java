@@ -49,16 +49,17 @@ public class ConnectionManager {
     }
 
     public static HttpResponse<String> getResponseByCityAndCountry(String city, String country) {
-        String url = BASEURL + "q=" + city + "," + country + "%appid=" + APIKEY + optionalParams;
+        String url = BASEURL + "q=" + city + "," + country + "&appid=" + APIKEY + optionalParams;
         return getResponse(url);
     }
     public static HttpResponse<String> getResponseByCityAndStateAndCountry(String city, String stateCode, String country) {
-        String url = BASEURL + "q=" + city + "," + stateCode + "," + country + "%appid=" + APIKEY + optionalParams;
+        city = city.replaceAll("\s","%20" );
+        String url = BASEURL + "q=" + city + "," + stateCode + "," + country + "&appid=" + APIKEY + optionalParams;
         return getResponse(url);
     }
 
     public static HttpResponse<String> getResponseByCityId(Integer cityid) {
-        String url = BASEURL + "q=" + cityid.toString() + "&appid=" + APIKEY + optionalParams;
+        String url = BASEURL + "id=" + cityid.toString() + "&appid=" + APIKEY + optionalParams;
         return getResponse(url);
     }
 
@@ -72,8 +73,14 @@ public class ConnectionManager {
         return getResponse(url);
     }
 
-    public static String getConnectionURL(String lat, String lon) {
-        return BASEURL + "lat=" + lat + "&lon=" + lon + "&appid=" + APIKEY + optionalParams;
+    public static HttpResponse<String> getResponseByZipIdAndCountryCode(Integer zipid, String countryCode) {
+        String url = BASEURL + "q=" + zipid.toString() + "," + countryCode + "&appid=" + APIKEY + optionalParams;
+        return getResponse(url);
+    }
+
+    public static HttpResponse<String> getResponseByZipIdAndCountryCode(String zipid, String countryCode) {
+        String url = BASEURL + "q=" + zipid + "," + countryCode + "&appid=" + APIKEY + optionalParams;
+        return getResponse(url);
     }
 
     public static void setUnits(Units units) {
@@ -86,6 +93,10 @@ public class ConnectionManager {
 
     public static void setLanguage(Language lang) {
         optionalParams = optionalParams + "&lang=" + lang.getValue();
+    }
+
+    public static void resetOptionalParams() {
+        optionalParams = "";
     }
 
 
