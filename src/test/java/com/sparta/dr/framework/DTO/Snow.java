@@ -18,4 +18,12 @@ public class Snow {
     public double getJsonMember3h() {
         return jsonMember3h;
     }
+
+    public boolean isSnow1hBetweenRange0To107(){
+        return getJsonMember1h()>=0 && getJsonMember1h()<=107;
+    }
+
+    public boolean isSnow3hBetweenRange0To320(){
+        return getJsonMember3h()>=0 && getJsonMember3h()<=320;
+    }
 }
