@@ -128,28 +128,96 @@ public class ConnectionManager {
         return getResponse(url);
     }
 
+    /**
+     * Return HttpResponse by passing Zip code as a String and country code, if country is not specified then the
+     * search works for USA as a default
+     * @return boolean
+     */
     public static HttpResponse<String> getResponseByZipIdAndCountryCode(String zipid, String countryCode) {
         String url = BASEURL + "q=" + zipid + "," + countryCode + "&appid=" + APIKEY + buildParams();
         return getResponse(url);
     }
 
+    /**
+     * Set the Units parameter with values of standard (kelvins), metric and imperial, if no parameter is set,
+     * standard is the default
+     */
     public static void setUnits(Units units) {
         unitsParam = "&units=" + units.getValue();
     }
 
+    /**
+     * Set the Mode parameter with values of xml and html, which sets the return type, if no parameter is set,
+     * return type is json
+     */
     public static void setMode(Mode mode) {
         modeParams = "&mode=" + mode.getValue();
     }
 
+    /**
+     * Set the Language parameter of the return object, available languages are:
+     *     AFRIKAANS("af"),
+     *     ALBANIAN("al"),
+     *     ARABIC("ar"),
+     *     AZERBAIJANI("az"),
+     *     BULGARIAN("bg"),
+     *     CATALAN("ca"),
+     *     CZECH("cz"),
+     *     DANISH("da"),
+     *     GERMAN("de"),
+     *     GREEK("el"),
+     *     ENGLISH("en"),
+     *     BASQUE("eu"),
+     *     PERSIAN_FARSI("fa"),
+     *     FINNISH("fi"),
+     *     FRENCH("fr"),
+     *     GALICIAN("gl"),
+     *     HEBREW("he"),
+     *     HINDI("hi"),
+     *     CROATIAN("hr"),
+     *     HUNGARIAN("hu"),
+     *     INDONESIAN("id"),
+     *     ITALIAN("it"),
+     *     JAPANESE("ja"),
+     *     KOREAN("kr"),
+     *     LATVIAN("la"),
+     *     LITHUANIAN("lt"),
+     *     MACEDONIAN("mk"),
+     *     NORWEGIAN("no"),
+     *     DUTCH("nl"),
+     *     POLISH("pl"),
+     *     PORTUGUESE("pt"),
+     *     PORTUGUÊS_BRASIL("pt_br"),
+     *     ROMANIAN("ro"),
+     *     RUSSIAN("ru"),
+     *     SWEDISH("sv, se"),
+     *     SLOVAK("sk"),
+     *     SLOVENIAN("sl"),
+     *     SPANISH("sp, es"),
+     *     SERBIAN("sr"),
+     *     THAI("th"),
+     *     TURKISH("tr"),
+     *     UKRAINIAN("ua, uk"),
+     *     VIETNAMESE("vi"),
+     *     CHINESE_SIMPLIFIED("zh_cn"),
+     *     CHINESE_TRADITIONAL("zh_tw"),
+     *     ZULU("zu");
+     */
     public static void setLanguage(Language lang) {
         languageParams = "&lang=" + lang.getValue();
     }
 
+    /**
+     * Builds the optional parameters into a single String
+     */
     private static String buildParams() {
         optionalParams = unitsParam + modeParams  + languageParams;
         return optionalParams;
     }
 
+    /**
+     * Resets all the parameter variables
+     */
     public static void resetOptionalParams() {
         optionalParams = "";
         unitsParam = "";
@@ -157,7 +225,10 @@ public class ConnectionManager {
         languageParams = "";
     }
 
-
+    /**
+     * Return a HttpResponse from the built url
+     * @return HttpResponse
+     */
     public static HttpResponse<String> getResponse(String url) {
         var client = HttpClient.newHttpClient();
         var request = HttpRequest
