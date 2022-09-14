@@ -28,4 +28,13 @@ public class Rain{
 			"1h = '" + jsonMember1h + '\'' + 
 			"}";
 		}
+
+
+	public boolean isRainNull(){
+		return getJsonMember1h() != null;
+	}
+
+	public boolean isRainPositive(){
+		return getJsonMember1h() >= 0;
+	}
 }
