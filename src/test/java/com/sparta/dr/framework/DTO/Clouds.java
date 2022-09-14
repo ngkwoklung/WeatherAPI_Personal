@@ -29,10 +29,18 @@ public class Clouds{
 			"}";
 		}
 
+	/**
+	 * Returns whether the clouds are present
+ 	 * @return (boolean) all
+	 */
 	public boolean isCloudsNull(){
 		return getAll() != null;
 	}
 
+	/**
+	 * Returns clouds level
+	 * @return all
+	 */
 	public boolean isCloudPositive(){
 		return getAll() >= 0;
 	}
