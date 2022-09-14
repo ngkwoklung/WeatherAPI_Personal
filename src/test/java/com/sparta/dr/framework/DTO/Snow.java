@@ -19,6 +19,14 @@ public class Snow {
         return jsonMember3h;
     }
 
+    @Override
+    public String toString() {
+        return "Snow{" +
+                "jsonMember1h=" + jsonMember1h +
+                ", jsonMember3h=" + jsonMember3h +
+                '}';
+    }
+
     public boolean isSnow1hBetweenRange0To107(){
         return getJsonMember1h()>=0 && getJsonMember1h()<=107;
     }
