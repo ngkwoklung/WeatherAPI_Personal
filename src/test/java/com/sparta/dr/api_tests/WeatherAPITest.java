@@ -1,10 +1,14 @@
 package com.sparta.dr.api_tests;
 
+import com.sparta.dr.framework.DTO.WeatherItem;
 import com.sparta.dr.framework.DTO.WeatherResponse;
 import com.sparta.dr.framework.connection_manager.ConnectionManager;
 import com.sparta.dr.framework.injector.Injector;
+import org.junit.Assert;
 import org.junit.jupiter.api.*;
 
+import java.sql.Connection;
+import java.util.List;
 import java.util.Random;
 
 public class WeatherAPITest {
@@ -49,6 +53,12 @@ public class WeatherAPITest {
         @DisplayName("Check that the icons are valid")
         void checkThatTheIconsAreValid() {
             Assertions.assertTrue(weatherResponse.areIconsInWeatherItemValid());
+        }
+
+        @Test
+        @DisplayName("Check that the description are valid")
+        void checkThatTheDescriptionAreValid() {
+            Assertions.assertTrue(weatherResponse.areDescriptionsInWeatherItemValid());
         }
     }
 }

@@ -226,7 +226,7 @@ public class WeatherResponse {
 	 */
 	public boolean areIdsInWeatherItemValid() {
 		for( WeatherItem item: weather){
-			if (!item.idISValid()) {
+			if (!item.idIsValid()) {
 				return false;
 			}
 		}
@@ -253,6 +253,24 @@ public class WeatherResponse {
 	public boolean areMainsInWeatherItemValid() {
 		for( WeatherItem item: weather){
 			if (!item.mainIsValid()) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public boolean areDescriptionsInWeatherItemValid() {
+		for( WeatherItem item: weather){
+			if (!item.descriptionIsValid()) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public boolean areDescriptionsInWeatherItemMatchWithIcon() {
+		for( WeatherItem item: weather){
+			if (!item.descriptionAndIconMatch()) {
 				return false;
 			}
 		}

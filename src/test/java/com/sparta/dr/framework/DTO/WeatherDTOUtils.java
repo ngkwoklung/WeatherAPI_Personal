@@ -7,6 +7,8 @@ public class WeatherDTOUtils {
 
     private static final String[] iconList = {"01d", "02d", "03d", "04d", "09d", "10d", "11d", "13d", "50d",
             "01n", "02n", "03n", "04n", "09n", "10n", "11n", "13n", "50n"};
+    private static final String[] iconDayList = {"01d", "02d", "03d", "04d", "09d", "10d", "11d", "13d", "50d",};
+    private static final String[] getIconNightList = {"01n", "02n", "03n", "04n", "09n", "10n", "11n", "13n", "50n"};
     private static final Integer[] thunderstormIdCodes = {200,201,202,210,211,212,221,230,231,232};
     private static final Integer[] drizzleIdCodes = {300,301,302,310,311,312,313,314,321};
     private static final Integer[] rainIdCodes = {500,501,502,503,504,511,520,521,522,531};
@@ -14,7 +16,8 @@ public class WeatherDTOUtils {
     private static final Integer[] atmosphereIdCodes = {701,711,721,731,741,751,761,762,771,781};
     private static final Integer[] clearIdCodes = {800};
     private static final Integer[] cloudsIdCodes = {801,802,803,804};
-    private static final String[] WeatherItemsMainList = {"Clouds", "Rain", "Thunderstorms", "Drizzle", "Snow", "Atmosphere", "Clear"};
+    private static final String[] WeatherItemsMainList = {"Clouds", "Rain", "Thunderstorm", "Drizzle", "Snow", "Atmosphere", "Clear"};
+    private static final String[] WeatherItemsDescription = {"clear sky", "few clouds", "scattered clouds", "broken clouds", "shower rain", "rain", "thunderstorm", "snow", "mist"};
 
     public static String[] getIconList() {
         return iconList;
@@ -51,6 +54,19 @@ public class WeatherDTOUtils {
     public static String[] getWeatherItemsMainList(){
         return WeatherItemsMainList;
     }
+
+    public static String[] getWeatherItemsDescription() {
+        return WeatherItemsDescription;
+    }
+
+    public static String[] getIconDayList() {
+        return iconDayList;
+    }
+
+    public static String[] getGetIconNightList() {
+        return getIconNightList;
+    }
+
     public static Integer[] getCorrespondingIdCodeArray(String type) {
         switch (type){
             case "Rain":
