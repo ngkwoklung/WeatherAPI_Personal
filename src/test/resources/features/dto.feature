@@ -12,7 +12,7 @@ Ability: Able to get Weather response
   Scenario: Checking the populated DTO has the correct Date
     Given that I call the API with a Date
     When I get a response
-    Then the DTO should have the today's date
+    Then the DTO should have today's date
 
   Scenario: Checking the populated DTO has the correct Sunrise and Sunset Time
     Given that I call the API with a Sunrise Time and a Sunset Time
@@ -23,7 +23,7 @@ Ability: Able to get Weather response
   Scenario: Checking the populated DTO has the correct Time Zone
     Given that I call the API with a Time Zone
     When I get a response
-    Then the DTO should have the a time zone within the correct range
+    Then the DTO should have a time zone within the correct range
 
   Scenario: Checking the populated DTO has the correct City and Country Ids
     Given that I call the API with a City Name and a Country Name
@@ -34,7 +34,7 @@ Ability: Able to get Weather response
   Scenario: Checking the populated DTO has a valid Visibility
     Given that I call the API with a Visibility
     When I get a response
-    Then the DTO should have a Visibility within the correct range
+    Then the DTO should have a Visibility value within the correct range
 
   Scenario: Checking the populated DTO has valid Wind data
     Given that I call the API with a Wind

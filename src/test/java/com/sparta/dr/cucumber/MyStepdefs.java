@@ -66,7 +66,7 @@ public class MyStepdefs {
     public void thatICallTheAPIWithADate() {
     }
 
-    @Then("the DTO should have the today's date")
+    @Then("the DTO should have today's date")
     public void theDTOShouldHaveTheTodaySDate() {
     }
 
@@ -86,7 +86,7 @@ public class MyStepdefs {
     public void thatICallTheAPIWithATimeZone() {
     }
 
-    @Then("the DTO should have the a time zone within the correct range")
+    @Then("the DTO should have a time zone within the correct range")
     public void theDTOShouldHaveTheATimeZoneWithinTheCorrectRange() {
     }
 
@@ -106,8 +106,8 @@ public class MyStepdefs {
     public void thatICallTheAPIWithAVisibility() {
     }
 
-    @Then("the DTO should have a Visibility within the correct range")
-    public void theDTOShouldHaveAVisibilityWithinTheCorrectRange() {
+    @Then("the DTO should have a Visibility value within the correct range")
+    public void theDTOShouldHaveAVisibilityValueWithinTheCorrectRange() {
     }
 
     @Given("that I call the API with a Wind")
