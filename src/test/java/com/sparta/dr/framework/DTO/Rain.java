@@ -29,11 +29,18 @@ public class Rain{
 			"}";
 		}
 
-
+	/**
+	 * Return whether rain is present or not
+ 	 * @return boolean
+	 */
 	public boolean isRainNull(){
 		return getJsonMember1h() != null;
 	}
 
+	/**
+	 * Returns whether density of rain is positive
+	 * @return
+	 */
 	public boolean isRainPositive(){
 		return getJsonMember1h() >= 0;
 	}
