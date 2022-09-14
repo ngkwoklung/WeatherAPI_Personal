@@ -127,4 +127,14 @@ public class ConnectionManagerTest {
         String expected = ("(GET https://api.openweathermap.org/data/2.5/weather?lat=51.5085&lon=-0.1257&appid=a39a8ef364461dd7292792ea50bba6a1&units=metric) 200");
         Assertions.assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("Check that setting optional parameters multiple times works")
+    void checkThatSettingOptionalParametersMultipleTimesWorks() {
+        ConnectionManager.setUnits(Units.IMPERIAL);
+        ConnectionManager.setUnits(Units.METRIC);
+        String actual = ConnectionManager.getResponseByCoord("51.5085", "-0.1257").toString();
+        String expected = "(GET https://api.openweathermap.org/data/2.5/weather?lat=51.5085&lon=-0.1257&appid=a39a8ef364461dd7292792ea50bba6a1&units=metric) 200";
+        Assertions.assertEquals(expected, actual);
+    }
 }

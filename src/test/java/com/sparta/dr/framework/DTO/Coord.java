@@ -13,7 +13,7 @@ public class Coord{
 	private Double lat;
 
 	/**
-	 * Get longitude
+	 * Return Get longitude
 	 * @return lon
 	 */
 	public Double getLon(){
@@ -21,7 +21,7 @@ public class Coord{
 	}
 
 	/**
-	 * Get latidute
+	 * Return Get latidute
 	 * @return lat
 	 */
 	public Double getLat(){
@@ -29,7 +29,7 @@ public class Coord{
 	}
 
 	/**
-	 * Obtain all the information as one string.
+	 * Return Obtain all the information as one string.
 	 * @return all values as a string
 	 */
 	@Override
@@ -41,18 +41,34 @@ public class Coord{
 			"}";
 		}
 
+	/**
+	 * Return a boolean statement if longitude is null or not
+	 * @return (boolean) lon
+	 */
 	public boolean lonIsNotNull(){
 		return getLon() != null;
 	}
 
+	/**
+	 * Return a boolean statement if latitude is null or not
+	 * @return (boolean) lat
+	 */
 	public boolean latIsNotNull(){
 		return getLat() != null;
 	}
 
+	/**
+	 * Return check whether longitude is in valid range
+	 * @return lon
+	 */
 	public boolean lonIsBetweenValidRange() {
 		return lon >= -180 && lon <= 180;
 	}
 
+	/**
+	 * Return check whether latitude is in valid range
+	 * @return lat
+	 */
 	public boolean latIsBetweenValidRange() {
 		return lat >= -90 && lat <= 90;
 	}

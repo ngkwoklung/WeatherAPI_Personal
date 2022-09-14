@@ -129,44 +129,101 @@ public class WeatherResponse {
 			",wind = '" + wind + '\'' + 
 			"}";
 		}
-		public boolean isRainValid(){
+
+	/**
+	 * Return whether rain is valid or not
+	 * @return boolean
+	 */
+	public boolean isRainValid(){
 		return rain != null;
 		}
+
+	/**
+	 * Return whether rain range is valid
+	 * @return rain range
+	 */
 	    public boolean isRainRangeValid(){
 		    if(rain!=null){
 			    return rain.getJsonMember1h()>= 0 && rain.getJsonMember1h() <= 320;
 		    } return false;
 	    }
+
+	/**
+	 * Return whether visibility is present or not
+	 * @return boolean (visibility)
+	 */
 	    public boolean isVisibilityValid(){
 		    return visibility != null;
 	    }
+	/**
+	 * Return check whether visibility is in valid range
+	 * @return visibility
+	 */
 		public boolean visibilityIsBetweenValidRange() {
 			return visibility >= 0 && visibility <= 10000;
 		}
+
+	/**
+	 * Return check whether time zone is present or not
+	 * @return boolean
+	 */
 	    public boolean isTimeZoneValid(){
 		    return timezone != null;
 	    }
+
+	/**
+	 * Return check whether timezone is in valid range
+	 * @return timezone
+	 */
 		public boolean timezoneIsBetweenValidRange() {
 			return timezone >= -43200 && timezone <= 50400;
 		}
 
+	/**
+	 * Return check whether date is today
+	 * @return boolean
+	 */
 		public boolean dtIsToday() {
 			return LocalDate.ofInstant(Instant.ofEpochSecond(dt), TimeZone.getDefault().toZoneId()).equals(LocalDate.now());
 		}
+
+	/**
+	 * Return check whether wind is present or not
+	 * @return boolean
+	 */
 		public boolean isWindValid(){
 		    return wind != null;
 		}
 
+	/**
+	 * Return whether cod is 200
+	 * @return cod
+	 */
+
 		public boolean isCOD200(){
 		    return cod == 200;
 		}
+
+	/**
+	 * Return whether sys is present or not
+	 * @return boolean
+	 */
 	    public boolean isSysValid(){
 		    return sys != null;
     	}
+
+	/**
+	 * Return whether ID is present or not
+	 * @return boolean
+	 */
 	    public boolean isIdValid() {
 			return id != null;
 		}
 
+	/**
+	 * Return check whether wind is present or not
+	 * @return boolean
+	 */
 	public boolean areIdsInWeatherItemValid() {
 		for( WeatherItem item: weather){
 			if (!item.idIsValid()) {
@@ -176,6 +233,10 @@ public class WeatherResponse {
 		return true;
 	}
 
+	/**
+	 * Return check whether icons in weather items are valid
+	 * @return boolean
+	 */
 	public boolean areIconsInWeatherItemValid() {
 		for( WeatherItem item: weather){
 			if (!item.iconIsValid()) {
@@ -185,6 +246,10 @@ public class WeatherResponse {
 		return true;
 	}
 
+	/**
+	 * Return check mains in weather item is present or not
+	 * @return boolean
+	 */
 	public boolean areMainsInWeatherItemValid() {
 		for( WeatherItem item: weather){
 			if (!item.mainIsValid()) {
