@@ -267,13 +267,4 @@ public class WeatherResponse {
 		}
 		return true;
 	}
-
-	public boolean areDescriptionsInWeatherItemMatchWithIcon() {
-		for( WeatherItem item: weather){
-			if (!item.descriptionAndIconMatch()) {
-				return false;
-			}
-		}
-		return true;
-	}
 }

@@ -108,30 +108,11 @@ public class WeatherItem{
 	}
 
 	public boolean descriptionIsValid() {
-		String[] arrayToSearch = WeatherDTOUtils.getWeatherItemsDescription();
-		return Arrays.asList(arrayToSearch).contains(description);
-	}
-
-	public boolean descriptionAndIconMatch() {
-		if (!descriptionIsValid() || !iconIsValid()) {
+		if (!mainIsValid()) {
 			return false;
 		}
-		String[] descriptionList = WeatherDTOUtils.getWeatherItemsDescription();
-		int indexOfDescription = Arrays.asList(descriptionList).indexOf(description);
-		int indexOfIcon = getIndexOfIcon();
-		return indexOfIcon == indexOfDescription;
-	}
-
-	private int getIndexOfIcon() {
-		int indexOfIcon;
-		String[] iconDayList = WeatherDTOUtils.getIconDayList();
-		String[] iconNightList = WeatherDTOUtils.getGetIconNightList();
-		if (Arrays.asList(iconDayList).contains(icon)) {
-			indexOfIcon = Arrays.asList(iconDayList).indexOf(icon);
-		} else {
-			indexOfIcon = Arrays.asList(iconNightList).indexOf(icon);
-		}
-		return indexOfIcon;
+		String[] arrayToSearch = WeatherDTOUtils.getCorrespondingWeatherDescriptions(main);
+		return Arrays.asList(arrayToSearch).contains(description);
 	}
 
 }
