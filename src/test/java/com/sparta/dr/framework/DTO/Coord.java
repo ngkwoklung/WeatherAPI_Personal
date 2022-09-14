@@ -41,18 +41,34 @@ public class Coord{
 			"}";
 		}
 
+	/**
+	 * Returns a boolean statement if longitude is null or not
+	 * @return (boolean) lon
+	 */
 	public boolean lonIsNotNull(){
 		return getLon() != null;
 	}
 
+	/**
+	 * Returns a boolean statement if latitude is null or not
+	 * @return (boolean) lat
+	 */
 	public boolean latIsNotNull(){
 		return getLat() != null;
 	}
 
+	/**
+	 * Returns check whether longitude is in valid range
+	 * @return lon
+	 */
 	public boolean lonIsBetweenValidRange() {
 		return lon >= -180 && lon <= 180;
 	}
 
+	/**
+	 * Returns check whether latitude is in valid range
+	 * @return lat
+	 */
 	public boolean latIsBetweenValidRange() {
 		return lat >= -90 && lat <= 90;
 	}
