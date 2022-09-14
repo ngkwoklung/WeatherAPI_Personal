@@ -1,35 +1,17 @@
 package com.sparta.dr.api_tests;
 
-import com.sparta.dr.framework.DTO.WeatherItem;
 import com.sparta.dr.framework.DTO.WeatherResponse;
 import com.sparta.dr.framework.connection_manager.ConnectionManager;
 import com.sparta.dr.framework.injector.Injector;
-import org.junit.Assert;
 import org.junit.jupiter.api.*;
 
-import java.sql.Connection;
-import java.util.List;
-import java.util.Random;
 
 public class WeatherAPITest {
     private static WeatherResponse weatherResponse;
 
-    private static int getRandomLatitude(){
-        Random random = new Random();
-        return random.nextInt(-90,90);
-    }
-    private static int getRandomLongitude(){
-        Random random = new Random();
-        return random.nextInt(-180,180);
-    }
-
-    private static final int longitude = getRandomLongitude();
-    private static final int latitude = getRandomLatitude();
-
-
     @BeforeAll
     static void setupAll() {
-         weatherResponse = Injector.injectWeatherDTO(ConnectionManager.getResponseByCoord(latitude, longitude));
+         weatherResponse = Injector.injectWeatherDTO(ConnectionManager.getResponseByRandomCoord());
     }
 
     @Nested
