@@ -18,7 +18,7 @@ public class Snow {
     public double getJsonMember3h() {
         return jsonMember3h;
     }
-
+    
     @Override
     public String toString() {
         return "Snow{" +
@@ -27,10 +27,18 @@ public class Snow {
                 '}';
     }
 
+    /**
+    * Returns whether snow is in range
+    * @return 1h
+    */
     public boolean isSnow1hBetweenRange0To107(){
         return getJsonMember1h()>=0 && getJsonMember1h()<=107;
     }
 
+    /**
+     * Returns whether snow is in range
+     * @return 3h
+     */
     public boolean isSnow3hBetweenRange0To320(){
         return getJsonMember3h()>=0 && getJsonMember3h()<=320;
     }

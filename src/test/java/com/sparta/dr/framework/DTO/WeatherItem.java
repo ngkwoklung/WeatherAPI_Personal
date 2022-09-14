@@ -67,28 +67,39 @@ public class WeatherItem{
 			"}";
 	}
 
+	/**
+	 * Return check whether main starts with capital letter
+	 * @return letter
+	 */
 	public boolean mainStartsWithCapitalLetter() {
 		return String.valueOf(main.charAt(0)).equals(String.valueOf(main.charAt(0)).toUpperCase());
 	}
 
+	/**
+	 * Return check whether ID is valid
+	 * @return id
+	 */
 	public boolean idISValid() {
 		Integer[] arrayToSearch = WeatherDTOUtils.getCorrespondingIdCodeArray(main);
 		return Arrays.asList(arrayToSearch).contains(id);
 	}
 
+	/**
+	 * Return check whether icon is valid
+	 * @return icon
+	 */
 	public boolean iconIsValid(){
 		String[] arrayToSearch = WeatherDTOUtils.getIconList();
 		return Arrays.asList(arrayToSearch).contains(icon);
 	}
 
+	/**
+	 * Return check whether main is valid
+	 * @return main
+	 */
 	public boolean mainIsValid(){
 		String[] arrayToSearch = WeatherDTOUtils.getWeatherItemsMainList();
 		return Arrays.asList(arrayToSearch).contains(main);
 	}
-
-
-
-
-
 
 }

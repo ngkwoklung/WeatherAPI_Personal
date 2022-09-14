@@ -31,7 +31,7 @@ public class Main{
 	private Double tempMax;
 
 	/**
-	 * Get temperature
+	 * Return Get temperature
 	 * @return temp
 	 */
 	public Double getTemp(){
@@ -39,7 +39,7 @@ public class Main{
 	}
 
 	/**
-	 * Get minimum temperature
+	 * Return Get minimum temperature
 	 * @return temp_min
 	 */
 	public Double getTempMin(){
@@ -47,7 +47,7 @@ public class Main{
 	}
 
 	/**
-	 * Get ground level
+	 * Return Get ground level
 	 * @return grnd_level
 	 */
 	public Integer getGrndLevel(){
@@ -55,7 +55,7 @@ public class Main{
 	}
 
 	/**
-	 * Get humidity level
+	 * Return Get humidity level
 	 * @return humidity
 	 */
 	public Integer getHumidity(){
@@ -63,7 +63,7 @@ public class Main{
 	}
 
 	/**
-	 * Get pressure level
+	 * Return Get pressure level
 	 * @return pressure
 	 */
 	public Integer getPressure(){
@@ -71,7 +71,7 @@ public class Main{
 	}
 
 	/**
-	 * Get sea level
+	 * Return Get sea level
 	 * @return sea_level
 	 */
 	public Integer getSeaLevel(){
@@ -79,7 +79,7 @@ public class Main{
 	}
 
 	/**
-	 * Obtain the information about how temperature feels like
+	 * Return Obtain the information about how temperature feels like
 	 * @return feels_like
 	 */
 	public Double getFeelsLike(){
@@ -87,7 +87,7 @@ public class Main{
 	}
 
 	/**
-	 * Get maximum temperature
+	 * Return Get maximum temperature
 	 * @return temp_max
 	 */
 	public Double getTempMax(){
@@ -95,7 +95,7 @@ public class Main{
 	}
 
 	/**
-	 * Obtain all the information as one string.
+	 * Return Obtain all the information as one string.
 	 * @return all values as a string
 	 */
 	@Override
