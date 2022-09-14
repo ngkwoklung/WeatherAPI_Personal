@@ -157,9 +157,6 @@ public class WeatherResponse {
 		    return wind != null;
 		}
 
-		public boolean isDegBetween0And360(){
-			return getWind().getDeg() >= 0 && getWind().getDeg() <= 360;
-		}
 		public boolean isCOD200(){
 		    return cod == 200;
 		}
