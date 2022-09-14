@@ -5,11 +5,16 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.Random;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ConnectionManager {
+
+
+    private static final int longitude = ConnectionManagerUtils.getRandomLongitude();
+    private static final int latitude = ConnectionManagerUtils.getRandomLatitude();
     private static final Logger logger = Logger.getLogger("my logger");
     private static final ConsoleHandler consoleHandler = new ConsoleHandler();
     private static final String BASEURL = "https://api.openweathermap.org/data/2.5/weather?";
@@ -25,6 +30,10 @@ public class ConnectionManager {
 
     public static HttpResponse<String> getResponseByCoord(String lat, String lon) {
         String url = BASEURL + "lat=" + lat + "&lon=" + lon + "&appid=" + APIKEY + optionalParams;
+        return getResponse(url);
+    }
+    public static HttpResponse<String> getResponseByRandomCoord() {
+        String url = BASEURL + "lat=" + latitude + "&lon=" + longitude + "&appid=" + APIKEY + optionalParams;
         return getResponse(url);
     }
     public static HttpResponse<String> getResponseByCoord(int lat, int lon) {

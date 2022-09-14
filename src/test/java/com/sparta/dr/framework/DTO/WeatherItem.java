@@ -20,6 +20,13 @@ public class WeatherItem{
 	@JsonProperty("id")
 	private Integer id;
 
+	public WeatherItem(String icon, String description, String main, Integer id) {
+		this.icon = icon;
+		this.description = description;
+		this.main = main;
+		this.id = id;
+	}
+
 	/**
 	 * Obtain Icon ID
 	 * @return icon
@@ -67,11 +74,10 @@ public class WeatherItem{
 			"}";
 	}
 
-	public boolean mainStartsWithCapitalLetter() {
-		return String.valueOf(main.charAt(0)).equals(String.valueOf(main.charAt(0)).toUpperCase());
-	}
-
-	public boolean idISValid() {
+	public boolean idIsValid() {
+		if (!mainIsValid()) {
+			return false;
+		}
 		Integer[] arrayToSearch = WeatherDTOUtils.getCorrespondingIdCodeArray(main);
 		return Arrays.asList(arrayToSearch).contains(id);
 	}
@@ -86,9 +92,31 @@ public class WeatherItem{
 		return Arrays.asList(arrayToSearch).contains(main);
 	}
 
+	public boolean descriptionIsValid() {
+		String[] arrayToSearch = WeatherDTOUtils.getWeatherItemsDescription();
+		return Arrays.asList(arrayToSearch).contains(description);
+	}
 
+	public boolean descriptionAndIconMatch() {
+		if (!descriptionIsValid() || !iconIsValid()) {
+			return false;
+		}
+		String[] descriptionList = WeatherDTOUtils.getWeatherItemsDescription();
+		int indexOfDescription = Arrays.asList(descriptionList).indexOf(description);
+		int indexOfIcon = getIndexOfIcon();
+		return indexOfIcon == indexOfDescription;
+	}
 
-
-
+	private int getIndexOfIcon() {
+		int indexOfIcon;
+		String[] iconDayList = WeatherDTOUtils.getIconDayList();
+		String[] iconNightList = WeatherDTOUtils.getGetIconNightList();
+		if (Arrays.asList(iconDayList).contains(icon)) {
+			indexOfIcon = Arrays.asList(iconDayList).indexOf(icon);
+		} else {
+			indexOfIcon = Arrays.asList(iconNightList).indexOf(icon);
+		}
+		return indexOfIcon;
+	}
 
 }
