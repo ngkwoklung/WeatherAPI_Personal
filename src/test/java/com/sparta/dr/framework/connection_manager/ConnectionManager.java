@@ -175,4 +175,11 @@ public class ConnectionManager {
         logger.log(Level.FINE, "Response is: " + response.body());
         return response;
     }
+
+//    public static String getHeader(String key) {
+//        return getResponse()
+//                .headers()
+//                .firstValue(key)
+//                .orElse("Key not found");
+//    }
 }
