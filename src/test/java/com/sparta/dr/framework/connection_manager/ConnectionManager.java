@@ -176,10 +176,10 @@ public class ConnectionManager {
         return response;
     }
 
-//    public static String getHeader(String key) {
-//        return getResponse()
-//                .headers()
-//                .firstValue(key)
-//                .orElse("Key not found");
-//    }
+    public static String getHeader(HttpResponse<String> response, String key) {
+        return getResponse(String.valueOf(response))
+                .headers()
+                .firstValue(key)
+                .orElse("Key not found");
+    }
 }

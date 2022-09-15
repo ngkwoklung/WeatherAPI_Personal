@@ -10,18 +10,18 @@ Ability: Able to get Weather response
     Then the DTO should have the correct Weather Id
 
   Scenario: Checking the populated DTO has the correct Date
-    Given that I call the API with a Date
+    Given that I call the API
     When I get a response
     Then the DTO should have today's date
 
   Scenario: Checking the populated DTO has the correct Sunrise and Sunset Time
-    Given that I call the API with a Sunrise Time and a Sunset Time
+    Given that I call the API
     When I get a response
     Then the DTO should have a Sunrise Time of today's date
     And the DTO should have a Sunset Time of today's date
 
   Scenario: Checking the populated DTO has the correct Time Zone
-    Given that I call the API with a Time Zone
+    Given that I call the API
     When I get a response
     Then the DTO should have a time zone within the correct range
 
@@ -32,12 +32,12 @@ Ability: Able to get Weather response
     And the DTO should have the correct Country Id
 
   Scenario: Checking the populated DTO has a valid Visibility
-    Given that I call the API with a Visibility
+    Given that I call the API
     When I get a response
     Then the DTO should have a Visibility value within the correct range
 
   Scenario: Checking the populated DTO has valid Wind data
-    Given that I call the API with a Wind
+    Given that I call the API
     When I get a response
     Then the DTO should have a Wind Degree within the correct range
     And the DTO should have a Wind Gust within the correct range
@@ -54,11 +54,11 @@ Ability: Able to get Weather response
     Then the DTO should have a Snow Volume within the correct range
 
   Scenario: Checking the populated DTO has a valid Rain Volume
-    Given that I call the API with a Rain Volume
+    Given that I call the API
     When I get a response
     Then the DTO should have a Rain Volume within the correct range
 
   Scenario: Checking the populated DTO has a valid Cloud value
-    Given that I call the API with a Cloud value
+    Given that I call the API
     When I get a response
     Then the DTO should have a Cloud value within the correct range

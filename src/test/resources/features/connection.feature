@@ -1,7 +1,7 @@
 Ability: Able to get connection response
   @SmokeTest
   Scenario: Checking the connection works
-    Given that I call the API for the weather in London
+    Given that I call the API
     When I get a response
     Then the status code should be 200
 
@@ -23,7 +23,7 @@ Ability: Able to get connection response
     Then the correct JSON file is passed
 
   Scenario: Checking that the URL passes the correct the correct City Id
-    Given that I call the API with a City Id
+    Given that I call the API
     When I get a response
     Then the correct City Id is passed to the URL
 

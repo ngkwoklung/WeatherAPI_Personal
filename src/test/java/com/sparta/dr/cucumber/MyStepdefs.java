@@ -10,12 +10,10 @@ import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 
 import java.net.http.HttpResponse;
-import java.time.LocalDate;
 
 public class MyStepdefs {
     HttpResponse<String> response;
     WeatherResponse weatherDTO;
-    String url = "";
 
     @Given("that I call the API")
     public void thatICallTheAPI() {
@@ -29,9 +27,8 @@ public class MyStepdefs {
 
     @Then("the status code should be {int}")
     public void theStatusCodeShouldBe(int code) {
-        int expected = code;
         int actual = iGetAResponse().statusCode();
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(code, actual);
     }
 
     @Then("the DTO should be populated")
@@ -86,41 +83,35 @@ public class MyStepdefs {
 
     @Then("the Weather DTO should have valid populated values")
     public void theWeatherDTOShouldHaveValidPopulatedValues() {
-        //weatherDTO = Injector.injectWeatherDTO()
+        weatherDTO = Injector.injectWeatherDTO(response);
     }
 
     @Then("the DTO should have the correct Weather Id")
     public void theDTOShouldHaveTheCorrectWeatherId() {
+        Assertions.assertTrue(weatherDTO.isIdValid());
     }
-
-    @Given("that I call the API with a Date")
-    public HttpResponse<String> thatICallTheAPIWithADate() {
-//        WeatherResponse weatherDto = Injector.injectWeatherDTO(ConnectionManager.getResponse());
-        return response;
-    }
+    
 
     @Then("the DTO should have today's date")
     public void theDTOShouldHaveTheTodaySDate() {
+        Assertions.assertTrue(weatherDTO.dtIsToday());
     }
 
-    @Given("that I call the API with a Sunrise Time and a Sunset Time")
-    public void thatICallTheAPIWithASunriseTimeAndASunsetTime() {
-    }
 
     @Then("the DTO should have a Sunrise Time of today's date")
     public void theDTOShouldHaveASunriseTimeOfTodaySDate() {
+        Assertions.assertTrue(weatherDTO.getSys().sunriseIsToday());
     }
 
     @And("the DTO should have a Sunset Time of today's date")
     public void theDTOShouldHaveASunsetTimeOfTodaySDate() {
+        Assertions.assertTrue(weatherDTO.getSys().sunsetIsToday());
     }
 
-    @Given("that I call the API with a Time Zone")
-    public void thatICallTheAPIWithATimeZone() {
-    }
 
     @Then("the DTO should have a time zone within the correct range")
     public void theDTOShouldHaveTheATimeZoneWithinTheCorrectRange() {
+        Assertions.assertTrue(weatherDTO.timezoneIsBetweenValidRange());
     }
 
     @Given("that I call the API with a City Name and a Country Name")
@@ -138,55 +129,48 @@ public class MyStepdefs {
         Assertions.assertTrue(thatICallTheAPIWithACityNameAndACountryName().uri().toString().contains("2075535"));
     }
 
-    @Given("that I call the API with a Visibility")
-    public HttpResponse<String> thatICallTheAPIWithAVisibility() {
-    }
-
     @Then("the DTO should have a Visibility value within the correct range")
     public void theDTOShouldHaveAVisibilityValueWithinTheCorrectRange() {
-    }
-
-    @Given("that I call the API with a Wind")
-    public void thatICallTheAPIWithAWind() {
+        Assertions.assertTrue(weatherDTO.isVisibilityValid());
     }
 
     @Then("the DTO should have a Wind Degree within the correct range")
     public void theDTOShouldHaveAWindDegreeWithinTheCorrectRange() {
+        Assertions.assertTrue(weatherDTO.getWind().isDegBetween0And360());
     }
 
     @And("the DTO should have a Wind Gust within the correct range")
     public void theDTOShouldHaveAWindGustWithinTheCorrectRange() {
+        Assertions.assertTrue(weatherDTO.getWind().isGustValid());
     }
 
     @And("the DTO should have a Wind Speed")
     public void theDTOShouldHaveAWindSpeed() {
+        Assertions.assertTrue(weatherDTO.getWind().isSpeedValid());
     }
 
     @Given("that I call the API with a Snow Volume for the last {int} hour, mm")
     public void thatICallTheAPIWithASnowVolumeForTheLastHourMm(int arg0) {
+        weatherDTO = Injector.injectWeatherDTO(response);
     }
 
     @Then("the DTO should have a Snow Volume within the correct range")
     public void theDTOShouldHaveASnowVolumeWithinTheCorrectRange() {
+        //Assertions.assertTrue(weatherDTO.getSnow().isSnow1hBetweenRange0To107());
     }
 
     @Given("that I call the API with a Snow Volume for the last {int} hours, mm")
     public void thatICallTheAPIWithASnowVolumeForTheLastHoursMm(int arg0) {
-    }
-
-    @Given("that I call the API with a Rain Volume")
-    public void thatICallTheAPIWithARainVolume() {
+        //Assertions.assertTrue(weatherDTO.getSnow().isSnow3hBetweenRange0To320());
     }
 
     @Then("the DTO should have a Rain Volume within the correct range")
     public void theDTOShouldHaveARainVolumeWithinTheCorrectRange() {
-    }
-
-    @Given("that I call the API with a Cloud value")
-    public void thatICallTheAPIWithACloudValue() {
+        Assertions.assertTrue(weatherDTO.isRainRangeValid());
     }
 
     @Then("the DTO should have a Cloud value within the correct range")
     public void theDTOShouldHaveACloudValueWithinTheCorrectRange() {
+        Assertions.assertTrue(weatherDTO.getClouds().isCloudPositive());
     }
 }
