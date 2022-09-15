@@ -246,4 +246,11 @@ public class ConnectionManager {
         logger.log(Level.FINE, "Response is: " + response.body());
         return response;
     }
+
+    public static String getHeader(HttpResponse<String> response, String key) {
+        return getResponse(String.valueOf(response))
+                .headers()
+                .firstValue(key)
+                .orElse("Key not found");
+    }
 }
