@@ -17,8 +17,6 @@ public class WeatherAPITest {
     @Nested
     @DisplayName("Weather Items Tests")
     class WeatherItemsTest {
-
-
         @Test
         @DisplayName("check that the id is valid")
         void checkThatTheIdIsValid() {
