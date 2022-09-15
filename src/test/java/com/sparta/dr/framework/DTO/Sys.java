@@ -126,7 +126,7 @@ public class Sys{
 	 * @return time
 	 */
 	public boolean sunriseIsToday() {
-		return LocalDate.ofInstant(Instant.ofEpochSecond(getSunrise()), TimeZone.getDefault().toZoneId()).equals(LocalDate.now());
+		return LocalDate.ofInstant(Instant.ofEpochSecond(sunrise), TimeZone.getDefault().toZoneId()).equals(LocalDate.now());
 	}
 
 	/**
@@ -134,6 +134,6 @@ public class Sys{
 	 * @return time
 	 */
 	public boolean sunsetIsToday() {
-		return LocalDate.ofInstant(Instant.ofEpochSecond(getSunset()), TimeZone.getDefault().toZoneId()).equals(LocalDate.now());
+		return LocalDate.ofInstant(Instant.ofEpochSecond(sunset), TimeZone.getDefault().toZoneId()).equals(LocalDate.now());
 	}
 }
