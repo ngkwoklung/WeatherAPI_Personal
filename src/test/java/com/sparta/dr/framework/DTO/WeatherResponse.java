@@ -53,6 +53,9 @@ public class WeatherResponse {
 	@JsonProperty("wind")
 	private Wind wind;
 
+	@JsonProperty("snow")
+	private Snow snow;
+
 	public Rain getRain(){
 		return rain;
 	}
@@ -108,6 +111,8 @@ public class WeatherResponse {
 	public Wind getWind(){
 		return wind;
 	}
+
+	public Snow getSnow(){ return snow;}
 
 	@Override
  	public String toString(){

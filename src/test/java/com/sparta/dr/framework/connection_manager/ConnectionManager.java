@@ -36,11 +36,11 @@ public class ConnectionManager {
      */
     public static HttpResponse<String> getResponseByCoord(String lat, String lon) {
 
-        String url = BASEURL + "lat=" + lat + "&lon=" + lon + "&appid=" + APIKEY + optionalParams;
+        String url = BASEURL + "lat=" + lat + "&lon=" + lon + "&appid=" + APIKEY + buildParams();
         return getResponse(url);
     }
     public static HttpResponse<String> getResponseByRandomCoord() {
-        String url = BASEURL + "lat=" + latitude + "&lon=" + longitude + "&appid=" + APIKEY + optionalParams;
+        String url = BASEURL + "lat=" + latitude + "&lon=" + longitude + "&appid=" + APIKEY + buildParams();
         return getResponse(url);
     }
 
