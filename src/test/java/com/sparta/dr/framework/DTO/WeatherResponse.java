@@ -53,6 +53,9 @@ public class WeatherResponse {
 	@JsonProperty("wind")
 	private Wind wind;
 
+	@JsonProperty("snow")
+	private Snow snow;
+
 	public Rain getRain(){
 		return rain;
 	}
@@ -108,6 +111,8 @@ public class WeatherResponse {
 	public Wind getWind(){
 		return wind;
 	}
+
+	public Snow getSnow(){ return snow;}
 
 	@Override
  	public String toString(){
@@ -262,15 +267,6 @@ public class WeatherResponse {
 	public boolean areDescriptionsInWeatherItemValid() {
 		for( WeatherItem item: weather){
 			if (!item.descriptionIsValid()) {
-				return false;
-			}
-		}
-		return true;
-	}
-
-	public boolean areDescriptionsInWeatherItemMatchWithIcon() {
-		for( WeatherItem item: weather){
-			if (!item.descriptionAndIconMatch()) {
 				return false;
 			}
 		}
