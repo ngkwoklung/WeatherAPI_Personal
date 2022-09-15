@@ -4,15 +4,14 @@ import com.sparta.dr.framework.DTO.Main;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-//Double temp, Double tempMin, Integer grndLevel, Integer humidity, Integer pressure, Integer seaLevel, Double feelsLike, Double tempMax
 
 public class MainTests {
     private final Main validKelvinMain = new Main(295.72, 295.86, 290.8, 298.29, 1007, 70, 1007, 926);
     private final Main validCelsiusMain = new Main(22.93, 23.08, 17.65, 25.14, 1007, 69, 1007, 926);
     private final Main validFahrenheitMain = new Main(73.27, 73.54, 63.77, 77.25, 1007, 69, 1007, 926);
-    private final Main invalidKelvinMain = new Main(-12.0, -1.0, 350.0, -0.0, 1300, 101, 1300, 1300);
-    private final Main invalidCelsiusMain = new Main(-100.0, -100.0, 80.0, -100.0, 1300, 101, 1300, 1300);
-    private final Main invalidFahrenheitMain = new Main(-150.0, -150.0, 150.0, -140.0, 1300, 101, 1300, 1300);
+    private final Main invalidKelvinMain = new Main(-12.0, -1.0, 350.0, -0.0, 1300, 101, 1300, 1800);
+    private final Main invalidCelsiusMain = new Main(-100.0, -100.0, 80.0, -100.0, 1300, -10, -100, -50);
+    private final Main invalidFahrenheitMain = new Main(-150.0, -150.0, 150.0, -140.0, 1300, 2000, 0, 2000);
 
 
     @Test
@@ -111,9 +110,6 @@ public class MainTests {
         Assertions.assertTrue(validFahrenheitMain.isHumidityValid());
         Assertions.assertFalse(invalidKelvinMain.isHumidityValid());
         Assertions.assertFalse(invalidCelsiusMain.isHumidityValid());
-        Assertions.assertFalse(invalidFahrenheitMain.isHumidityValid();
+        Assertions.assertFalse(invalidFahrenheitMain.isHumidityValid());
     }
-
-
-
 }

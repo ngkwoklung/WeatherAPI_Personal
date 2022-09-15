@@ -10,10 +10,16 @@ import org.junit.jupiter.api.*;
 
 public class WeatherAPITest {
     private static WeatherResponse weatherResponse;
+    private static WeatherResponse imperialWeatherResponse;
+    private static WeatherResponse metricWeatherResponse;
 
     @BeforeAll
     static void setupAll() {
-         weatherResponse = Injector.injectWeatherDTO(ConnectionManager.getResponseByRandomCoord());
+        weatherResponse = Injector.injectWeatherDTO(ConnectionManager.getResponseByRandomCoord());
+        ConnectionManager.setUnits(Units.IMPERIAL);
+        imperialWeatherResponse = Injector.injectWeatherDTO(ConnectionManager.getResponseByRandomCoord());
+        ConnectionManager.setUnits(Units.METRIC);
+        metricWeatherResponse= Injector.injectWeatherDTO(ConnectionManager.getResponseByRandomCoord());
     }
 
     @Nested
@@ -67,18 +73,118 @@ public class WeatherAPITest {
     class MainTests {
 
         @Test
-        @DisplayName("Check that pressure is within Reasonable range")
+        @DisplayName("Check that pressure is within reasonable range")
         void checkThatPressureIsWithinReasonableRange() {
             Assertions.assertTrue(weatherResponse.getMain().isPressureWithinReasonableRange(weatherResponse.getMain().getPressure()));
         }
 
         @Test
-        @DisplayName("Check that fahrenheit is within Reasonable range")
-        void checkThatFahrenheitIsWithinReasonableRange() {
-            ConnectionManager.setUnits(Units.IMPERIAL);
-            WeatherResponse imperial = Injector.injectWeatherDTO(ConnectionManager.getResponseByRandomCoord());
-            //Assertions.assertTrue(imperial.getMain().isFahrenheitWithinReasonableRange();
+        @DisplayName("Check that sea level is within a reasonable range ")
+        void checkThatSeaLevelIsWithinAReasonableRange() {
+            Assertions.assertTrue(weatherResponse.getMain().isPressureWithinReasonableRange(weatherResponse.getMain().getSeaLevel()));
         }
+
+        @Test
+        @DisplayName("Check that ground level is within a reasonable range ")
+        void checkThatGroundLevelIsWithinAReasonableRange() {
+            Assertions.assertTrue(weatherResponse.getMain().isPressureWithinReasonableRange(weatherResponse.getMain().getGrndLevel()));
+        }
+
+        @Test
+        @DisplayName("Check that the humidity is a percentage")
+        void checkThatTheHumidityIs() {
+            Assertions.assertTrue(weatherResponse.getMain().isHumidityValid());
+        }
+
+        @Test
+        @DisplayName("Check that the kelvin temp is withing a reasonable range")
+        void checkThatTheKelvinTempIsWithingAReasonableRange() {
+            Assertions.assertTrue(weatherResponse.getMain().isKelvinWithinReasonableRange(weatherResponse.getMain().getTemp()));
+        }
+
+        @Test
+        @DisplayName("Check that the celsius temp is withing a reasonable range")
+        void checkThatTheCelsiusTempIsWithingAReasonableRange() {
+            Assertions.assertTrue(metricWeatherResponse.getMain().isCelsiusWithinReasonableRange(metricWeatherResponse.getMain().getTemp()));
+        }
+
+        @Test
+        @DisplayName("Check that fahrenheit temp is within Reasonable range")
+        void checkThatFahrenheitTempIsWithinReasonableRange() {
+            Assertions.assertTrue(imperialWeatherResponse.getMain().isFahrenheitWithinReasonableRange(imperialWeatherResponse.getMain().getTemp()));
+        }
+
+        @Test
+        @DisplayName("Check that the kelvin  max temp is withing a reasonable range")
+        void checkThatTheKelvinMaxTempIsWithingAReasonableRange() {
+            Assertions.assertTrue(weatherResponse.getMain().isKelvinWithinReasonableRange(weatherResponse.getMain().getTempMax()));
+        }
+
+        @Test
+        @DisplayName("Check that the celsius  max temp is withing a reasonable range")
+        void checkThatTheCelsiusMaxTempIsWithingAReasonableRange() {
+            Assertions.assertTrue(metricWeatherResponse.getMain().isCelsiusWithinReasonableRange(metricWeatherResponse.getMain().getTempMax()));
+        }
+
+        @Test
+        @DisplayName("Check that fahrenheit max temp is within reasonable range")
+        void checkThatFahrenheitMaxTempIsWithinReasonableRange() {
+            Assertions.assertTrue(imperialWeatherResponse.getMain().isFahrenheitWithinReasonableRange(imperialWeatherResponse.getMain().getTempMax()));
+        }
+
+        @Test
+        @DisplayName("Check that the kelvin  min temp is withing a reasonable range")
+        void checkThatTheKelvinMinTempIsWithingAReasonableRange() {
+            Assertions.assertTrue(weatherResponse.getMain().isKelvinWithinReasonableRange(weatherResponse.getMain().getTempMin()));
+        }
+
+        @Test
+        @DisplayName("Check that the celsius  max temp is withing a reasonable range")
+        void checkThatTheCelsiusMinTempIsWithingAReasonableRange() {
+            Assertions.assertTrue(metricWeatherResponse.getMain().isCelsiusWithinReasonableRange(metricWeatherResponse.getMain().getTempMin()));
+        }
+
+        @Test
+        @DisplayName("Check that fahrenheit max temp is within reasonable range")
+        void checkThatFahrenheitMinTempIsWithinReasonableRange() {
+            Assertions.assertTrue(imperialWeatherResponse.getMain().isFahrenheitWithinReasonableRange(imperialWeatherResponse.getMain().getTempMin()));
+        }
+
+        @Test
+        @DisplayName("Check that the kelvin feel like temp is withing a reasonable range")
+        void checkThatTheKelvinFeelsLikeTempIsWithingAReasonableRange() {
+            Assertions.assertTrue(weatherResponse.getMain().isKelvinWithinReasonableRange(weatherResponse.getMain().getFeelsLike()));
+        }
+
+        @Test
+        @DisplayName("Check that the celsius feels like temp is withing a reasonable range")
+        void checkThatTheCelsiusFeelsLikeTempIsWithingAReasonableRange() {
+            Assertions.assertTrue(metricWeatherResponse.getMain().isCelsiusWithinReasonableRange(metricWeatherResponse.getMain().getFeelsLike()));
+        }
+
+        @Test
+        @DisplayName("Check that fahrenheit feels like temp is within reasonable range")
+        void checkThatFahrenheitFeelsLikeTempIsWithinReasonableRange() {
+            Assertions.assertTrue(imperialWeatherResponse.getMain().isFahrenheitWithinReasonableRange(imperialWeatherResponse.getMain().getFeelsLike()));
+        }
+        @Test
+        @DisplayName("Check that the kelvin max temp is greater than min temp")
+        void checkThatTheKelvinMaxTempIsGreaterThanMinTemp() {
+            Assertions.assertTrue(weatherResponse.getMain().isMinTempLowerThanMaxTemp());
+        }
+
+        @Test
+        @DisplayName("Check that the celsius feels like temp is withing a reasonable range")
+        void checkThatTheCelsiusMaxTempIsGreaterThanMinTemp() {
+            Assertions.assertTrue(metricWeatherResponse.getMain().isMinTempLowerThanMaxTemp());
+        }
+
+        @Test
+        @DisplayName("Check that fahrenheit feels like temp is within Reasonable range")
+        void checkThatFahrenheitMaxTempIsGreaterThanMinTemp() {
+            Assertions.assertTrue(imperialWeatherResponse.getMain().isMinTempLowerThanMaxTemp());
+        }
+
     }
 
     @Nested
@@ -192,7 +298,7 @@ public class WeatherAPITest {
     class WeatherResponseTest {
 
         @Test
-        @DisplayName("check that rain is valid ")
+        @DisplayName("check that rain is valid")
         void checkThatRainIsValid() {
             Assertions.assertTrue(weatherResponse.isRainValid());
         }
@@ -212,7 +318,7 @@ public class WeatherAPITest {
         @Test
         @DisplayName("Check that visibility is between valid ranges")
         void checkThatVisibilityIsBetweenValidRanges() {
-            Assertions.assertTrue(weatherResponse.visibilityIsBetweenValidRange())
+            Assertions.assertTrue(weatherResponse.visibilityIsBetweenValidRange());
         }
 
         @Test
@@ -251,5 +357,4 @@ public class WeatherAPITest {
             Assertions.assertTrue(weatherResponse.isIdValid());
         }
     }
-
 }
