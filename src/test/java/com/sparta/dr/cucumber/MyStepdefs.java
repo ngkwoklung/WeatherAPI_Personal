@@ -166,7 +166,7 @@ public class MyStepdefs {
 
     @Then("the DTO should have a Rain Volume within the correct range")
     public void theDTOShouldHaveARainVolumeWithinTheCorrectRange() {
-        Assertions.assertTrue(weatherDTO.isRainRangeValid());
+        Assertions.assertTrue(weatherDTO.getRain().isRainRangeValid());
     }
 
     @Then("the DTO should have a Cloud value within the correct range")

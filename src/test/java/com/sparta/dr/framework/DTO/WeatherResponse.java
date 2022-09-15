@@ -141,17 +141,7 @@ public class WeatherResponse {
 	 */
 	public boolean isRainValid(){
 		return rain != null;
-		}
-
-	/**
-	 * Return whether rain range is valid
-	 * @return rain range
-	 */
-	    public boolean isRainRangeValid(){
-		    if(rain!=null){
-			    return rain.getJsonMember1h()>= 0 && rain.getJsonMember1h() <= 320;
-		    } return false;
-	    }
+	}
 
 	/**
 	 * Return whether visibility is present or not
