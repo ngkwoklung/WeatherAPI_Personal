@@ -44,4 +44,13 @@ public class Rain{
 	public boolean isRainPositive(){
 		return getJsonMember1h() >= 0;
 	}
+
+	/**
+	 * Return whether rain range is valid
+	 * @return rain range
+	 */
+	public boolean isRainRangeValid(){
+			return getJsonMember1h()>= 0 && getJsonMember1h() <= 320;
+
+	}
 }

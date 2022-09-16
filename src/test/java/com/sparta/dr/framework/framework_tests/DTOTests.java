@@ -551,8 +551,8 @@ public class DTOTests {
     @Test
     @DisplayName("when calling isRainRangeValid method, return true")
     void whenCallingIsRainRangeValidMethodReturnTrue() {
-        Mockito.when(mockWeatherResponse.isRainRangeValid()).thenReturn(true);
-        assertTrue(mockWeatherResponse.isRainRangeValid());
+        Mockito.when(mockWeatherResponse.getRain().isRainRangeValid()).thenReturn(true);
+        assertTrue(mockWeatherResponse.getRain().isRainRangeValid());
     }
 
 

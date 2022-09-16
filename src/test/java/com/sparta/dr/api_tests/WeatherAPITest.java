@@ -25,6 +25,10 @@ public class WeatherAPITest {
     @Nested
     @DisplayName("Clouds tests")
     class CloudsTests {
+        @BeforeAll
+        static void setupAllCloudsTests(){
+            Assumptions.assumeTrue(weatherResponse.getClouds() != null);
+        }
 
         @Test
         @DisplayName("Check cloud all field is not null")
@@ -190,6 +194,11 @@ public class WeatherAPITest {
     @Nested
     @DisplayName("Rain tests")
     class RainTests{
+        @BeforeAll
+        static void setupAllRainTests(){
+            Assumptions.assumeTrue(weatherResponse.getRain()!=null);
+        }
+
         @Test
         @DisplayName("Check rain is not null")
         void checkRainIsNotNull() {
@@ -201,11 +210,20 @@ public class WeatherAPITest {
         void checkRainAfter1HrIsPositive() {
             Assertions.assertTrue(weatherResponse.getRain().isRainPositive());
         }
+        @Test
+        @DisplayName("Check that rain range is valid")
+        void checkThatRainRangeIsValid() {
+            Assertions.assertTrue(weatherResponse.getRain().isRainRangeValid());
+        }
     }
 
     @Nested
     @DisplayName("Snow tests")
     class SnowTests{
+        @BeforeAll
+        static void setupAllSnowTests(){
+            Assumptions.assumeTrue(weatherResponse.getSnow()!=null);
+        }
         @Test
         @DisplayName("Check snow 1hr is in the range")
         void checkSnowIsInTheRange() {
@@ -296,18 +314,6 @@ public class WeatherAPITest {
     @Nested
     @DisplayName("Weather Response")
     class WeatherResponseTest {
-
-        @Test
-        @DisplayName("check that rain is valid")
-        void checkThatRainIsValid() {
-            Assertions.assertTrue(weatherResponse.isRainValid());
-        }
-
-        @Test
-        @DisplayName("Check that rain range is valid")
-        void checkThatRainRangeIsValid() {
-            Assertions.assertTrue(weatherResponse.isRainRangeValid());
-        }
 
         @Test
         @DisplayName("Check that the visibility is valid")
