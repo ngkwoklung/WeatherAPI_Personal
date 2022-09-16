@@ -117,25 +117,25 @@ public class WeatherResponse {
 	}
 
 	@Override
- 	public String toString(){
-		return 
-			"WeatherResponseDTO{" + 
-			"rain = '" + rain + '\'' + 
-			",visibility = '" + visibility + '\'' + 
-			",timezone = '" + timezone + '\'' + 
-			",main = '" + main + '\'' + 
-			",clouds = '" + clouds + '\'' + 
-			",sys = '" + sys + '\'' + 
-			",dt = '" + dt + '\'' + 
-			",coord = '" + coord + '\'' + 
-			",weather = '" + weather + '\'' + 
-			",name = '" + name + '\'' + 
-			",cod = '" + cod + '\'' + 
-			",id = '" + id + '\'' + 
-			",base = '" + base + '\'' + 
-			",wind = '" + wind + '\'' + 
-			"}";
-		}
+	public String toString() {
+		return "WeatherResponse{" +
+				"rain=" + rain +
+				", visibility=" + visibility +
+				", timezone=" + timezone +
+				", main=" + main +
+				", clouds=" + clouds +
+				", sys=" + sys +
+				", dt=" + dt +
+				", coord=" + coord +
+				", weather=" + weather +
+				", name='" + name + '\'' +
+				", cod=" + cod +
+				", id=" + id +
+				", base='" + base + '\'' +
+				", wind=" + wind +
+				", snow=" + snow +
+				'}';
+	}
 
 	/**
 	 * Return whether rain is valid or not
@@ -190,6 +190,14 @@ public class WeatherResponse {
 	 */
 		public boolean isWindValid(){
 		    return wind != null;
+		}
+
+	/**
+	 * Return check whether snow is present or not
+	 * @return boolean
+	 */
+	public boolean isSnowValid() {
+			return snow != null;
 		}
 
 	/**

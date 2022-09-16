@@ -14,6 +14,3 @@ public enum Mode {
         return value;
     }
 }
-
-
-

@@ -80,7 +80,6 @@ public class DTOTests {
                 Integer.valueOf(9));
     }
 
-    //Tests for wind dto
    @Test
    @DisplayName("Is degree in range")
    void isDegreeInRange(){
@@ -448,8 +447,6 @@ public class DTOTests {
         assertTrue(mockWeatherItem.descriptionIsValid());
     }
 
-
-    // Tests for WeatherResponse DTO
     @Test
     @DisplayName("When Calling getVisibility, return 5")
     void whenCallingGetVisibilityReturn5() {
@@ -554,12 +551,4 @@ public class DTOTests {
         Mockito.when(mockWeatherResponse.getRain().isRainRangeValid()).thenReturn(true);
         assertTrue(mockWeatherResponse.getRain().isRainRangeValid());
     }
-
-
-
 }
-
-
-
-
-

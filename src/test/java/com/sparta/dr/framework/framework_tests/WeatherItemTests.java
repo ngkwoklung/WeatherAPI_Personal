@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-
 public class WeatherItemTests {
 
     private final WeatherItem validWeatherItem = new WeatherItem("02n", "few clouds", "Clouds", 801);

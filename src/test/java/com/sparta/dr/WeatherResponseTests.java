@@ -31,5 +31,4 @@ public class WeatherResponseTests {
     void checkThatTimeZoneIsBetweenValidRange(){
         Assertions.assertTrue(dto.timezoneIsBetweenValidRange());
     }
-
 }

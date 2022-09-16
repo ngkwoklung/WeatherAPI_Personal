@@ -6,13 +6,11 @@ Ability: Able to get connection response
     When I get a response
     Then the status code should be 200
 
-
   @SmokeTest @RegressionTest
   Scenario: Checking that I get all the responses
     Given that I call the API
     When I get a response
     Then the DTO should be populated
-
 
   @SmokeTest @RegressionTest
   Scenario: Checking that the URL is correct
@@ -25,7 +23,6 @@ Ability: Able to get connection response
     Given that I call the API with Lat and Lon
     When I get a response
     Then the correct Lon and Lat are passed to the URL
-
 
   @SmokeTest @RegressionTest
   Scenario: Checking that the response has the correct JSON file

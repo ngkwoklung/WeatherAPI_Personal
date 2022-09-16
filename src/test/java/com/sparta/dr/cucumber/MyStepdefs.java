@@ -92,14 +92,12 @@ public class MyStepdefs {
         weatherDTO = Injector.injectWeatherDTO(response);
         Assertions.assertTrue(weatherDTO.isIdValid());
     }
-    
 
     @Then("the DTO should have today's date")
     public void theDTOShouldHaveTheTodaySDate() {
         weatherDTO = Injector.injectWeatherDTO(response);
         Assertions.assertTrue(weatherDTO.dtIsToday());
     }
-
 
     @Then("the DTO should have a Sunrise Time of today's date")
     public void theDTOShouldHaveASunriseTimeOfTodaySDate() {
@@ -112,7 +110,6 @@ public class MyStepdefs {
         weatherDTO = Injector.injectWeatherDTO(response);
         Assertions.assertTrue(weatherDTO.getSys().sunsetIsToday());
     }
-
 
     @Then("the DTO should have a time zone within the correct range")
     public void theDTOShouldHaveTheATimeZoneWithinTheCorrectRange() {
@@ -165,22 +162,6 @@ public class MyStepdefs {
 
     @Given("that I call the API with a Snow Volume for the last {int} hour, mm")
     public void thatICallTheAPIWithASnowVolumeForTheLastHourMm(int arg0) {
-        weatherDTO = Injector.injectWeatherDTO(response);
-    }
-
-    @Then("the DTO should have a Snow Volume within the correct range")
-    public void theDTOShouldHaveASnowVolumeWithinTheCorrectRange() {
-        weatherDTO = Injector.injectWeatherDTO(response);
-        Assumptions.assumeTrue(response.body() != null);
-        Assumptions.assumeTrue(weatherDTO.getSnow() != null);
-        Assertions.assertTrue(weatherDTO.getSnow().isSnow1hBetweenRange0To107());
-    }
-
-    @Given("that I call the API with a Snow Volume for the last {int} hours, mm")
-    public void thatICallTheAPIWithASnowVolumeForTheLastHoursMm(int arg0) {
-        weatherDTO = Injector.injectWeatherDTO(response);
-        Assumptions.assumeTrue(weatherDTO.getSnow() != null);
-        Assertions.assertTrue(weatherDTO.getSnow().isSnow3hBetweenRange0To320());
     }
 
     @Then("the DTO should have a Rain Volume within the correct range")
@@ -201,5 +182,11 @@ public class MyStepdefs {
         String expected = "https://api.openweathermap.org/data/2.5/weather?q=london&appid=a39a8ef364461dd7292792ea50bba6a1";
         String actual = iGetAResponse().uri().toString();
         Assertions.assertEquals(expected,actual);
+    }
+
+    @Then("the min temp should be lower than the max temp")
+    public void theMinTempShouldBeLowerThanTheMaxTemp() {
+        weatherDTO = Injector.injectWeatherDTO(response);
+        Assertions.assertTrue(weatherDTO.getMain().isMinTempLowerThanMaxTemp());
     }
 }
