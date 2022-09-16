@@ -14,7 +14,7 @@ public class Injector {
      * Fills DTO array with all the relevant information that has been downloaded from the website.
      *
      * Pass HttpResponse in order to make the injector work successfully.
-     * @param response
+     * @param response The API response
      * @return DTO object
      */
     public static WeatherResponse injectWeatherDTO(HttpResponse<String> response){

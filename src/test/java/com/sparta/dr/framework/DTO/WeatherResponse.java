@@ -112,7 +112,9 @@ public class WeatherResponse {
 		return wind;
 	}
 
-	public Snow getSnow(){ return snow;}
+	public Snow getSnow(){
+		return snow;
+	}
 
 	@Override
  	public String toString(){

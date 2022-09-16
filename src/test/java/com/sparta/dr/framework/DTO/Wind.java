@@ -90,7 +90,7 @@ public class Wind {
 	}
 
 	/**
-	 * Return whether gusts is more than 0
+	 * Return whether gust is more than 0
 	 * @return boolean
 	 */
 	public boolean isGustValid(){
