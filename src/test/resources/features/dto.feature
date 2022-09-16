@@ -51,23 +51,17 @@ Ability: Able to get Weather response
     And the DTO should have a Wind Gust within the correct range
     And the DTO should have a Wind Speed
 
-  @SnowTest
-  Scenario: Checking the populated DTO has a valid 1h Snow Volume
-    Given that I call the API with a Snow Volume for the last 1 hour, mm
-    When I get a response
-    Then the DTO should have a Snow Volume within the correct range
-
-  @SnowTest
-  Scenario: Checking the populated DTO has a valid 3h Snow Volume
-    Given that I call the API with a Snow Volume for the last 3 hours, mm
-    When I get a response
-    Then the DTO should have a Snow Volume within the correct range
-
   @RainTest
   Scenario: Checking the populated DTO has a valid Rain Volume
     Given that I call the API
     When I get a response
     Then the DTO should have a Rain Volume within the correct range
+
+  @MainTest
+  Scenario: Checking whether minimum temp is less than maximum temp
+    Given that I call the API
+    When I get a response
+    Then the min temp should be lower than the max temp
 
   @CloudTest
   Scenario: Checking the populated DTO has a valid Cloud value

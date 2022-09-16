@@ -32,7 +32,6 @@ public class WeatherApiTestsWithoutFramework { //Uses Pojo in main
                 .newBuilder()
                 .uri(URI.create(url))
                 .build();
-
         HttpResponse<String> response =null;
 
         try {

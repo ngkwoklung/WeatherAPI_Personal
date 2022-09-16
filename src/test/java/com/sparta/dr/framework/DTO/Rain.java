@@ -51,6 +51,5 @@ public class Rain{
 	 */
 	public boolean isRainRangeValid(){
 			return getJsonMember1h()>= 0 && getJsonMember1h() <= 320;
-
 	}
 }

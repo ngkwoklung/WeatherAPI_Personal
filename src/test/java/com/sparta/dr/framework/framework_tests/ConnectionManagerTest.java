@@ -8,7 +8,6 @@ import org.junit.Assert;
 import org.junit.jupiter.api.*;
 
 public class ConnectionManagerTest {
-
     @BeforeEach
     void init() {
         ConnectionManager.setUnits(Units.METRIC);
@@ -44,7 +43,6 @@ public class ConnectionManagerTest {
         String actual = ConnectionManager.getResponseByCoord("51.5085", "-0.1257").toString();
         String expected = "(GET https://api.openweathermap.org/data/2.5/weather?lat=51.5085&lon=-0.1257&appid=a39a8ef364461dd7292792ea50bba6a1&units=metric&mode=html) 200";
         Assertions.assertEquals(expected, actual);
-
     }
 
     @Test

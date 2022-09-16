@@ -13,7 +13,6 @@ public class MainTests {
     private final Main invalidCelsiusMain = new Main(-100.0, -100.0, 80.0, -100.0, 1300, -10, -100, -50);
     private final Main invalidFahrenheitMain = new Main(-150.0, -150.0, 150.0, -140.0, 1300, 2000, 0, 2000);
 
-
     @Test
     @DisplayName("Check that the methods to check the temp are working")
     void checkThatTheMethodsToCheckTheTempAreWorking() {

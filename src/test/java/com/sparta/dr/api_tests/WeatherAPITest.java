@@ -188,7 +188,6 @@ public class WeatherAPITest {
         void checkThatFahrenheitMaxTempIsGreaterThanMinTemp() {
             Assertions.assertTrue(imperialWeatherResponse.getMain().isMinTempLowerThanMaxTemp());
         }
-
     }
 
     @Nested

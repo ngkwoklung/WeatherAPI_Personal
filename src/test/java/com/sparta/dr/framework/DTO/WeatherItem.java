@@ -114,5 +114,4 @@ public class WeatherItem{
 		String[] arrayToSearch = WeatherDTOUtils.getCorrespondingWeatherDescriptions(main);
 		return Arrays.asList(arrayToSearch).contains(description);
 	}
-
 }
