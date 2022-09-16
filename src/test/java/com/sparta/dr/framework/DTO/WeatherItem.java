@@ -20,6 +20,16 @@ public class WeatherItem{
 	@JsonProperty("id")
 	private Integer id;
 
+	public WeatherItem(String icon, String description, String main, Integer id) {
+		this.icon = icon;
+		this.description = description;
+		this.main = main;
+		this.id = id;
+	}
+
+	public WeatherItem() {
+	}
+
 	/**
 	 * Obtain Icon ID
 	 * @return icon
@@ -68,18 +78,13 @@ public class WeatherItem{
 	}
 
 	/**
-	 * Return check whether main starts with capital letter
-	 * @return letter
-	 */
-	public boolean mainStartsWithCapitalLetter() {
-		return String.valueOf(main.charAt(0)).equals(String.valueOf(main.charAt(0)).toUpperCase());
-	}
-
-	/**
 	 * Return check whether ID is valid
 	 * @return id
 	 */
-	public boolean idISValid() {
+	public boolean idIsValid() {
+    if (!mainIsValid()) {
+			return false;
+		}
 		Integer[] arrayToSearch = WeatherDTOUtils.getCorrespondingIdCodeArray(main);
 		return Arrays.asList(arrayToSearch).contains(id);
 	}
@@ -102,4 +107,11 @@ public class WeatherItem{
 		return Arrays.asList(arrayToSearch).contains(main);
 	}
 
+	public boolean descriptionIsValid() {
+		if (!mainIsValid()) {
+			return false;
+		}
+		String[] arrayToSearch = WeatherDTOUtils.getCorrespondingWeatherDescriptions(main);
+		return Arrays.asList(arrayToSearch).contains(description);
+	}
 }

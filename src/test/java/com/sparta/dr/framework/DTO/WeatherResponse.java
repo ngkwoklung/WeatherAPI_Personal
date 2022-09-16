@@ -53,6 +53,9 @@ public class WeatherResponse {
 	@JsonProperty("wind")
 	private Wind wind;
 
+	@JsonProperty("snow")
+	private Snow snow;
+
 	public Rain getRain(){
 		return rain;
 	}
@@ -109,26 +112,30 @@ public class WeatherResponse {
 		return wind;
 	}
 
+	public Snow getSnow(){
+		return snow;
+	}
+
 	@Override
- 	public String toString(){
-		return 
-			"WeatherResponseDTO{" + 
-			"rain = '" + rain + '\'' + 
-			",visibility = '" + visibility + '\'' + 
-			",timezone = '" + timezone + '\'' + 
-			",main = '" + main + '\'' + 
-			",clouds = '" + clouds + '\'' + 
-			",sys = '" + sys + '\'' + 
-			",dt = '" + dt + '\'' + 
-			",coord = '" + coord + '\'' + 
-			",weather = '" + weather + '\'' + 
-			",name = '" + name + '\'' + 
-			",cod = '" + cod + '\'' + 
-			",id = '" + id + '\'' + 
-			",base = '" + base + '\'' + 
-			",wind = '" + wind + '\'' + 
-			"}";
-		}
+	public String toString() {
+		return "WeatherResponse{" +
+				"rain=" + rain +
+				", visibility=" + visibility +
+				", timezone=" + timezone +
+				", main=" + main +
+				", clouds=" + clouds +
+				", sys=" + sys +
+				", dt=" + dt +
+				", coord=" + coord +
+				", weather=" + weather +
+				", name='" + name + '\'' +
+				", cod=" + cod +
+				", id=" + id +
+				", base='" + base + '\'' +
+				", wind=" + wind +
+				", snow=" + snow +
+				'}';
+	}
 
 	/**
 	 * Return whether rain is valid or not
@@ -136,17 +143,7 @@ public class WeatherResponse {
 	 */
 	public boolean isRainValid(){
 		return rain != null;
-		}
-
-	/**
-	 * Return whether rain range is valid
-	 * @return rain range
-	 */
-	    public boolean isRainRangeValid(){
-		    if(rain!=null){
-			    return rain.getJsonMember1h()>= 0 && rain.getJsonMember1h() <= 320;
-		    } return false;
-	    }
+	}
 
 	/**
 	 * Return whether visibility is present or not
@@ -196,6 +193,14 @@ public class WeatherResponse {
 		}
 
 	/**
+	 * Return check whether snow is present or not
+	 * @return boolean
+	 */
+	public boolean isSnowValid() {
+			return snow != null;
+		}
+
+	/**
 	 * Return whether cod is 200
 	 * @return cod
 	 */
@@ -226,7 +231,7 @@ public class WeatherResponse {
 	 */
 	public boolean areIdsInWeatherItemValid() {
 		for( WeatherItem item: weather){
-			if (!item.idISValid()) {
+			if (!item.idIsValid()) {
 				return false;
 			}
 		}
@@ -253,6 +258,15 @@ public class WeatherResponse {
 	public boolean areMainsInWeatherItemValid() {
 		for( WeatherItem item: weather){
 			if (!item.mainIsValid()) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public boolean areDescriptionsInWeatherItemValid() {
+		for( WeatherItem item: weather){
+			if (!item.descriptionIsValid()) {
 				return false;
 			}
 		}

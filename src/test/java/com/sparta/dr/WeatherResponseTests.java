@@ -1,8 +1,8 @@
 package com.sparta.dr;
 
 import com.sparta.dr.framework.DTO.WeatherResponse;
-import com.sparta.dr.framework.connectionmanager.ConnectionManager;
-import com.sparta.dr.framework.connectionmanager.Units;
+import com.sparta.dr.framework.connection_manager.ConnectionManager;
+import com.sparta.dr.framework.connection_manager.Units;
 import com.sparta.dr.framework.injector.Injector;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -31,5 +31,4 @@ public class WeatherResponseTests {
     void checkThatTimeZoneIsBetweenValidRange(){
         Assertions.assertTrue(dto.timezoneIsBetweenValidRange());
     }
-
 }

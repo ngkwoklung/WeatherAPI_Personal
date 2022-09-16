@@ -1,7 +1,7 @@
-package com.sparta.dr.framework.frameworktests;
+package com.sparta.dr.framework.framework_tests;
 
 import com.sparta.dr.framework.DTO.*;
-import com.sparta.dr.framework.connectionmanager.PropertiesLoader;
+import com.sparta.dr.framework.connection_manager.PropertiesLoader;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -12,7 +12,6 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.List;
 
 import static org.mockito.Mockito.mock;
 
